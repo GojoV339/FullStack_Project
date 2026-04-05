@@ -1,0 +1,136 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Student {
+  id                 String    @id @default(uuid())
+  registrationNumber String    @unique
+  name               String?
+  phone              String?
+  subscriptionStatus SubStatus @default(INACTIVE)
+  subscriptionExpiry DateTime?
+  cashfreeCustomerId String?
+  pushSubscription   String?
+  createdAt          DateTime  @default(now())
+  orders             Order[]
+  payments           Payment[]
+}
+
+model Cafeteria {
+  id             String     @id @default(uuid())
+  name           String
+  location       String
+  isOpen         Boolean    @default(true)
+  avgWaitMinutes Int        @default(10)
+  menuItems      MenuItem[]
+  orders         Order[]
+}
+
+model MenuItem {
+  id             String      @id @default(uuid())
+  cafeteriaId    String
+  cafeteria      Cafeteria   @relation(fields: [cafeteriaId], references: [id])
+  name           String
+  section        FoodSection
+  category       String
+  price          Decimal     @db.Decimal(8, 2)
+  imageUrl       String?
+  etaMinutes     Int         @default(0)
+  isCombo        Boolean     @default(false)
+  isPriorityOnly Boolean     @default(false)
+  isAvailable    Boolean     @default(true)
+  orderItems     OrderItem[]
+}
+
+model Order {
+  id            String        @id @default(uuid())
+  studentId     String
+  student       Student       @relation(fields: [studentId], references: [id])
+  cafeteriaId   String
+  cafeteria     Cafeteria     @relation(fields: [cafeteriaId], references: [id])
+  tokenNumber   Int
+  totalAmount   Decimal       @db.Decimal(8, 2)
+  paymentStatus PaymentStatus @default(PENDING)
+  orderStatus   OrderStatus   @default(AWAITING_PAYMENT)
+  expiresAt     DateTime
+  createdAt     DateTime      @default(now())
+  items         OrderItem[]
+  payment       Payment?
+}
+
+model OrderItem {
+  id         String   @id @default(uuid())
+  orderId    String
+  order      Order    @relation(fields: [orderId], references: [id])
+  menuItemId String
+  menuItem   MenuItem @relation(fields: [menuItemId], references: [id])
+  quantity   Int
+  unitPrice  Decimal  @db.Decimal(8, 2)
+}
+
+model Payment {
+  id                String        @id @default(uuid())
+  orderId           String        @unique
+  order             Order         @relation(fields: [orderId], references: [id])
+  studentId         String
+  student           Student       @relation(fields: [studentId], references: [id])
+  type              PaymentType
+  cashfreeOrderId   String?
+  cashfreePaymentId String?
+  status            PaymentStatus @default(PENDING)
+  amount            Decimal       @db.Decimal(8, 2)
+  createdAt         DateTime      @default(now())
+}
+
+model Staff {
+  id          String   @id @default(uuid())
+  name        String
+  email       String   @unique
+  password    String
+  cafeteriaId String
+  createdAt   DateTime @default(now())
+}
+
+model PushSubscription {
+  id           String   @id @default(uuid())
+  studentId    String   @unique
+  subscription String
+  createdAt    DateTime @default(now())
+}
+
+enum SubStatus {
+  ACTIVE
+  INACTIVE
+}
+
+enum FoodSection {
+  SNACK
+  COOK_TO_ORDER
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  FAILED
+  EXPIRED
+}
+
+enum OrderStatus {
+  AWAITING_PAYMENT
+  CONFIRMED
+  PREPARING
+  READY
+  COLLECTED
+  CANCELLED
+}
+
+enum PaymentType {
+  ORDER
+  SUBSCRIPTION
+}

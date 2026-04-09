@@ -2,16 +2,34 @@
 
 import { useState, useEffect, useRef } from 'react';
 
-interface PWAInstallState {
+interface UsePWAInstallReturn {
   isInstallable: boolean;
-  isIOS: boolean;
   isInstalled: boolean;
-  install: () => Promise<void>;
+  promptInstall: () => Promise<void>;
+  dismissPrompt: () => void;
 }
 
-export function usePWAInstall(): PWAInstallState {
+const DISMISS_KEY = 'pwa-install-dismissed';
+const DISMISS_DURATION = 7 * 24 * 60 * 60 * 1000; // 7 days in milliseconds
+
+function isDismissedRecently(): boolean {
+  const dismissedAt = localStorage.getItem(DISMISS_KEY);
+  if (!dismissedAt) return false;
+
+  const dismissedTime = parseInt(dismissedAt, 10);
+  const now = Date.now();
+  
+  if (now - dismissedTime < DISMISS_DURATION) {
+    return true;
+  } else {
+    // Cooldown expired, remove the key
+    localStorage.removeItem(DISMISS_KEY);
+    return false;
+  }
+}
+
+export function usePWAInstall(): UsePWAInstallReturn {
   const [isInstallable, setIsInstallable] = useState(false);
-  const [isIOS, setIsIOS] = useState(false);
   const [isInstalled, setIsInstalled] = useState(false);
   const deferredPrompt = useRef<BeforeInstallPromptEvent | null>(null);
 
@@ -22,36 +40,35 @@ export function usePWAInstall(): PWAInstallState {
       return;
     }
 
-    // Check for iOS
-    const isIOSDevice = /iPhone|iPad|iPod/.test(navigator.userAgent);
-    const isInStandaloneMode = ('standalone' in window.navigator) && (window.navigator as unknown as { standalone: boolean }).standalone;
-
-    if (isIOSDevice && !isInStandaloneMode) {
-      setIsIOS(true);
-    }
-
     // Listen for install prompt
     const handler = (e: Event) => {
       e.preventDefault();
       deferredPrompt.current = e as BeforeInstallPromptEvent;
-      setIsInstallable(true);
+      
+      // Only set installable if not dismissed recently
+      if (!isDismissedRecently()) {
+        setIsInstallable(true);
+      }
     };
 
     window.addEventListener('beforeinstallprompt', handler);
 
     // Listen for successful install
-    window.addEventListener('appinstalled', () => {
+    const appInstalledHandler = () => {
       setIsInstalled(true);
       setIsInstallable(false);
       deferredPrompt.current = null;
-    });
+    };
+
+    window.addEventListener('appinstalled', appInstalledHandler);
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handler);
+      window.removeEventListener('appinstalled', appInstalledHandler);
     };
   }, []);
 
-  const install = async () => {
+  const promptInstall = async () => {
     if (!deferredPrompt.current) return;
 
     deferredPrompt.current.prompt();
@@ -65,7 +82,14 @@ export function usePWAInstall(): PWAInstallState {
     setIsInstallable(false);
   };
 
-  return { isInstallable, isIOS, isInstalled, install };
+  const dismissPrompt = () => {
+    // Store dismissal timestamp
+    localStorage.setItem(DISMISS_KEY, Date.now().toString());
+    setIsInstallable(false);
+    deferredPrompt.current = null;
+  };
+
+  return { isInstallable, isInstalled, promptInstall, dismissPrompt };
 }
 
 // Type for the beforeinstallprompt event

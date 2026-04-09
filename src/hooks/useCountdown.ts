@@ -1,47 +1,61 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 
-export function useCountdown(targetDate: string | null) {
+/**
+ * Custom hook for countdown timer functionality
+ * **Validates: Requirements 13**
+ * 
+ * @param expiresAt - The expiration date/time
+ * @returns Object containing timeLeft, minutes, seconds, progress, and isExpired
+ */
+export function useCountdown(expiresAt: Date | string | null) {
   const [timeLeft, setTimeLeft] = useState<number>(0);
   const [isExpired, setIsExpired] = useState(false);
 
   useEffect(() => {
-    if (!targetDate) return;
+    if (!expiresAt) {
+      setTimeLeft(0);
+      setIsExpired(true);
+      return;
+    }
 
     const calculateTimeLeft = () => {
-      const diff = new Date(targetDate).getTime() - Date.now();
+      const expiryTime = typeof expiresAt === 'string' ? new Date(expiresAt) : expiresAt;
+      const diff = expiryTime.getTime() - Date.now();
+      
       if (diff <= 0) {
         setTimeLeft(0);
         setIsExpired(true);
         return;
       }
-      setTimeLeft(Math.ceil(diff / 1000));
+      
+      setTimeLeft(Math.floor(diff / 1000));
+      setIsExpired(false);
     };
 
+    // Calculate immediately
     calculateTimeLeft();
+    
+    // Update every second
     const interval = setInterval(calculateTimeLeft, 1000);
 
+    // Clean up interval on unmount
     return () => clearInterval(interval);
-  }, [targetDate]);
+  }, [expiresAt]);
 
-  const formatTime = useCallback((seconds: number) => {
-    const mins = Math.floor(seconds / 60);
-    const secs = seconds % 60;
-    return `${mins}:${secs.toString().padStart(2, '0')}`;
-  }, []);
-
-  const percentage = targetDate
-    ? Math.max(0, (timeLeft / 300) * 100) // 300 seconds = 5 minutes
-    : 0;
-
-  const urgency = timeLeft > 120 ? 'normal' : timeLeft > 30 ? 'warning' : 'critical';
+  // Calculate minutes and seconds
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+  
+  // Calculate progress (0-100) based on 5-minute timer (300 seconds)
+  const progress = Math.max(0, Math.min(100, (timeLeft / 300) * 100));
 
   return {
     timeLeft,
+    minutes,
+    seconds,
+    progress,
     isExpired,
-    formatted: formatTime(timeLeft),
-    percentage,
-    urgency,
   };
 }

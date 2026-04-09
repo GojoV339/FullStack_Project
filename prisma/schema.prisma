@@ -50,6 +50,7 @@ model MenuItem {
 
 model Order {
   id            String        @id @default(uuid())
+  orderNumber   String        @unique
   studentId     String
   student       Student       @relation(fields: [studentId], references: [id])
   cafeteriaId   String

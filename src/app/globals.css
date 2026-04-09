@@ -1,0 +1,129 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-secondary text-white min-h-screen;
+    padding-bottom: env(safe-area-inset-bottom, 0);
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 107, 53, 0.3);
+    border-radius: 9999px;
+  }
+}
+
+@layer components {
+  .glass {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+  }
+
+  .gradient-primary {
+    background: linear-gradient(135deg, #FF6B35 0%, #FF8F66 50%, #E55A24 100%);
+  }
+
+  .gradient-gold {
+    background: linear-gradient(135deg, #F59E0B 0%, #FBBF24 50%, #D97706 100%);
+  }
+
+  .gradient-dark {
+    background: linear-gradient(180deg, #1A1A2E 0%, #16213E 100%);
+  }
+
+  .text-gradient {
+    background: linear-gradient(135deg, #FF6B35, #FF8F66);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.05) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  .btn-primary {
+    @apply gradient-primary text-white font-semibold py-3 px-6 rounded-xl
+           shadow-primary transition-all duration-200 active:scale-95
+           hover:shadow-glow disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-secondary {
+    @apply glass text-white font-medium py-3 px-6 rounded-xl
+           transition-all duration-200 active:scale-95
+           hover:bg-white/10;
+  }
+
+  .input-field {
+    @apply w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3
+           text-white placeholder-white/30 focus:outline-none focus:ring-2
+           focus:ring-primary/50 focus:border-primary/50 transition-all;
+  }
+
+  .section-badge-snack {
+    @apply bg-snack-badge text-snack-text px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .section-badge-cook {
+    @apply bg-cook-badge text-cook-text px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  .section-badge-combo {
+    @apply bg-combo-badge text-combo-text px-3 py-1 rounded-full text-xs font-semibold;
+  }
+
+  /* Loading skeleton */
+  .skeleton {
+    @apply bg-white/5 rounded-lg animate-pulse;
+  }
+}
+
+@layer utilities {
+  .safe-bottom {
+    padding-bottom: max(env(safe-area-inset-bottom, 0), 16px);
+  }
+
+  .safe-top {
+    padding-top: max(env(safe-area-inset-top, 0), 16px);
+  }
+}

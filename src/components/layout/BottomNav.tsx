@@ -1,9 +1,9 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Search, ShoppingBag, User, UtensilsCrossed } from 'lucide-react';
+import { Home, UtensilsCrossed, ShoppingBag, User } from 'lucide-react';
 
 const navItems = [
   { href: '/cafeteria', icon: Home, label: 'Home' },
@@ -17,7 +17,16 @@ export default function BottomNav() {
 
   return (
     <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
-      <div className="glass border-t border-white/10 safe-bottom">
+      <div
+        className="safe-bottom"
+        style={{
+          background: 'rgba(255,255,255,0.95)',
+          backdropFilter: 'blur(20px)',
+          WebkitBackdropFilter: 'blur(20px)',
+          borderTop: '1px solid rgba(255,107,53,0.12)',
+          boxShadow: '0 -4px 20px rgba(255,107,53,0.08)',
+        }}
+      >
         <div className="flex items-center justify-around px-2 pt-2 pb-1 max-w-md mx-auto">
           {navItems.map((item) => {
             const isActive = pathname === item.href || pathname?.startsWith(item.href + '/');
@@ -36,21 +45,20 @@ export default function BottomNav() {
                   {isActive && (
                     <motion.div
                       layoutId="nav-indicator"
-                      className="absolute -inset-2 gradient-primary rounded-xl opacity-20"
+                      className="absolute -inset-2 rounded-xl"
+                      style={{ background: 'rgba(255,107,53,0.12)' }}
                       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     />
                   )}
                   <Icon
                     size={22}
-                    className={`relative z-10 transition-colors ${
-                      isActive ? 'text-primary' : 'text-white/40'
-                    }`}
+                    className="relative z-10 transition-colors"
+                    style={{ color: isActive ? '#FF6B35' : '#9CA3AF' }}
                   />
                 </motion.div>
                 <span
-                  className={`text-[10px] font-medium transition-colors ${
-                    isActive ? 'text-primary' : 'text-white/40'
-                  }`}
+                  className="text-[10px] font-medium transition-colors"
+                  style={{ color: isActive ? '#FF6B35' : '#9CA3AF' }}
                 >
                   {item.label}
                 </span>

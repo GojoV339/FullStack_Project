@@ -1,37 +1,40 @@
 import { z } from 'zod';
 
+// Registration number pattern for Amrita Vishwa Vidyapeetham
+export const registrationNumberSchema = z
+  .string()
+  .regex(
+    /^[A-Z]{2}\.EN\.U4[A-Z]{3}\d{2}\d{3}$/,
+    'Invalid registration number format'
+  );
+
 export const barcodeLoginSchema = z.object({
-  barcodeRaw: z.string().min(1, 'Barcode data is required'),
+  barcodeData: z.string().min(1),
 });
 
 export const manualLoginSchema = z.object({
-  registrationNumber: z
-    .string()
-    .regex(
-      /^[A-Z]{2}\.EN\.U4[A-Z]{3}\d{2}\d{3}$/,
-      'Invalid registration number format. Example: BL.EN.U4CSE22001'
-    ),
+  registrationNumber: registrationNumberSchema,
 });
 
 export const staffLoginSchema = z.object({
-  email: z.string().email('Invalid email'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
+  email: z.string().email(),
+  password: z.string().min(6),
 });
 
 export const createOrderSchema = z.object({
-  cafeteriaId: z.string().uuid('Invalid cafeteria ID'),
+  cafeteriaId: z.string().uuid(),
   items: z
     .array(
       z.object({
-        menuItemId: z.string().uuid('Invalid menu item ID'),
-        quantity: z.number().int().positive('Quantity must be positive'),
+        menuItemId: z.string().uuid(),
+        quantity: z.number().int().positive(),
       })
     )
-    .min(1, 'At least one item is required'),
+    .min(1),
 });
 
 export const updateOrderStatusSchema = z.object({
-  status: z.enum(['PREPARING', 'READY', 'COLLECTED']),
+  orderStatus: z.enum(['CONFIRMED', 'PREPARING', 'READY', 'COLLECTED', 'CANCELLED']),
 });
 
 export const pushSubscriptionSchema = z.object({

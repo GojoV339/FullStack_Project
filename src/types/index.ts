@@ -35,6 +35,7 @@ export interface CartItem {
 
 export interface OrderData {
   id: string;
+  orderNumber: string;
   tokenNumber: number;
   totalAmount: number;
   paymentStatus: 'PENDING' | 'PAID' | 'FAILED' | 'EXPIRED';

@@ -1,0 +1,784 @@
+can you fucking redesign the entire css , don't use the colors which are currently in our codebase they are very bad , i am seriously telling i don't want to see those colors again in my website and most importantly where are the animations and remove the cash free instead of that , i want you to just simulate the cash payment , like when i go to the check out page , you just let me click on the pay button and then show animations that payment is completed and return the fucking order token for fodd 
+
+i will give you the prompt again but in the prompt i need you to ignore one thing about the css , you choose the best colors for the food no dark colors , remember no fucking dark colors , i am very serious about this i hope you understood how serious i am about this remeber these instructions 
+
+You are a senior full-stack engineer and UI/UX designer with 10+ years of experience shipping production-grade Progressive Web Apps used by 100,000+ users. You have deep expertise in Next.js, React, Framer Motion, Three.js, and premium mobile-first design systems.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PROJECT: AMRITA FEAST — PWA v4.0
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+A premium canteen pre-ordering Progressive Web App for Amrita Vishwa Vidyapeetham, Bengaluru. Students scan their college ID barcode, browse the menu, pay via UPI, and get a live token number — skipping the queue entirely.
+
+The UI MUST feel like a premium food delivery app (Swiggy/Zomato level). Warm food colors throughout. Every interaction animated. Never gray. Never static.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+CRITICAL: DESIGN MANDATE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+COLORS — Replace every gray with warm food tones:
+  Primary:     #FF6B35  (saffron-orange — buttons, CTAs, active states)
+  Primary dark:#C0410F  (hover/press state)
+  Accent warm: #FFB347  (turmeric yellow — highlights, badges)
+  Background:  #FFF8F4  (warm off-white — page background, NOT pure white or gray)
+  Surface:     #FFFFFF  (cards, sheets)
+  Surface dim: #FFF0E8  (tinted card backgrounds)
+  Snack badge: #FEF3C7 text #92400E  (amber — "Ready Now" items)
+  Cook badge:  #DBEAFE text #1E40AF  (blue — "Cook to Order" items)
+  Combo badge: #F3E8FF text #6B21A8  (purple — combo deals)
+  Success:     #10B981
+  Warning:     #F59E0B
+  Error:       #EF4444
+  Text primary:#1A1A2E
+  Text muted:  #6B7280
+
+DO NOT USE gray-100, gray-200, slate-100, zinc-100, or any neutral gray for backgrounds or cards. Every surface must be warm-tinted.
+
+TYPOGRAPHY:
+  - Use Inter (Google Font) — loaded via next/font
+  - Headings: font-weight 700, color #1A1A2E
+  - Prices: font-weight 800, color #FF6B35
+  - Token number: 72px, font-weight 900, letter-spacing -2px
+
+ANIMATIONS — Every interaction must animate:
+  - Page transitions: opacity 0→1 + y 16→0, duration 0.3s ease-out
+  - Add to cart: card scale 1→1.06→1, flying food emoji to cart icon
+  - Cart badge: scale bounce 1→1.5→1 on increment
+  - Tab switch: animated orange underline slides between tabs
+  - Button press: scale 0.96 on active
+  - Sheet open: spring(damping:30, stiffness:300) slide up from bottom
+  - Success screen: Lottie confetti plays 2s, then token counter animates 0→N
+  - Payment success: receipt slides up, order ID "stamps" in with scale + opacity
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TECH STACK
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Frontend:
+  - Next.js 14 (App Router) + TypeScript 5 strict mode
+  - Tailwind CSS v3 with custom warm color tokens in tailwind.config.ts
+  - Framer Motion — ALL animations, page transitions, gestures
+  - Three.js + React Three Fiber — 3D cafeteria selection cards
+  - @react-three/drei — Environment, Float, RoundedBox
+  - lottie-react — scan success, cart burst, confetti, chef hat loader
+  - Zustand — cart store, auth store, order store
+  - TanStack Query v5 — all API calls with optimistic updates
+  - html5-qrcode — barcode scanning via phone camera
+  - next-pwa + Workbox — service worker, offline, installable
+  - web-push — push notifications
+  - Sonner — toast notifications (styled orange)
+  - Lucide React — icons
+  - next/font (Inter) — typography
+
+Backend (inside Next.js):
+  - Next.js Route Handlers in app/api/
+  - Prisma ORM + PostgreSQL (Supabase free tier)
+  - Zod — input validation on every route
+  - jose — JWT (httpOnly cookie, 7 day expiry)
+  - bcryptjs — staff password hashing
+  - web-push — server-side push sender
+  - Cashfree Payments — UPI sandbox
+
+Infrastructure:
+  - Supabase — PostgreSQL + Realtime + Storage (all free)
+  - Vercel — deployment (free tier)
+  - Cashfree sandbox — UPI payment simulation
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+RESPONSIVE DESIGN RULES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Mobile (default, <768px):
+  - Bottom navigation bar (4 tabs: Menu, Orders, Offers, Profile)
+  - Full-screen sheets slide up from bottom
+  - 2-column food card grid
+  - Cart as draggable bottom sheet (Framer Motion drag)
+  - Checkout stacked vertically
+  - Min tap target: 44x44px on all interactive elements
+  - Font inputs min 16px (prevents iOS zoom)
+  - padding-bottom: env(safe-area-inset-bottom) on bottom nav
+
+Desktop (≥1024px):
+  - Left sidebar navigation (240px fixed)
+  - Main content area with max-width 1200px centered
+  - Menu: 3-column food card grid
+  - Cart: right sidebar panel (fixed, 380px wide) — not a sheet
+  - Checkout: 2-column layout (order summary left, payment right)
+  - Staff dashboard: 3-column Kanban board
+
+Tablet (768px–1023px):
+  - Bottom nav still visible
+  - 2-column grid with larger cards
+  - Cart as bottom sheet
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+DATABASE SCHEMA (Prisma)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+File: prisma/schema.prisma
+
+model Student {
+  id                 String    @id @default(uuid())
+  registrationNumber String    @unique
+  name               String?
+  phone              String?
+  subscriptionStatus SubStatus @default(INACTIVE)
+  subscriptionExpiry DateTime?
+  pushSubscription   String?
+  createdAt          DateTime  @default(now())
+  orders             Order[]
+  payments           Payment[]
+}
+
+model Cafeteria {
+  id             String     @id @default(uuid())
+  name           String
+  location       String
+  isOpen         Boolean    @default(true)
+  avgWaitMinutes Int        @default(10)
+  menuItems      MenuItem[]
+  orders         Order[]
+}
+
+model MenuItem {
+  id             String      @id @default(uuid())
+  cafeteriaId    String
+  cafeteria      Cafeteria   @relation(fields: [cafeteriaId], references: [id])
+  name           String
+  section        FoodSection
+  category       String
+  price          Decimal     @db.Decimal(8,2)
+  imageUrl       String?
+  etaMinutes     Int         @default(0)
+  isCombo        Boolean     @default(false)
+  isPriorityOnly Boolean     @default(false)
+  isAvailable    Boolean     @default(true)
+  orderItems     OrderItem[]
+}
+
+model Order {
+  id            String        @id @default(uuid())
+  orderNumber   String        @unique  // e.g. "AF-2024-0042" — displayed to student
+  studentId     String
+  student       Student       @relation(fields: [studentId], references: [id])
+  cafeteriaId   String
+  cafeteria     Cafeteria     @relation(fields: [cafeteriaId], references: [id])
+  tokenNumber   Int
+  totalAmount   Decimal       @db.Decimal(8,2)
+  paymentStatus PaymentStatus @default(PENDING)
+  orderStatus   OrderStatus   @default(AWAITING_PAYMENT)
+  expiresAt     DateTime
+  createdAt     DateTime      @default(now())
+  items         OrderItem[]
+  payment       Payment?
+}
+
+model OrderItem {
+  id         String   @id @default(uuid())
+  orderId    String
+  order      Order    @relation(fields: [orderId], references: [id])
+  menuItemId String
+  menuItem   MenuItem @relation(fields: [menuItemId], references: [id])
+  quantity   Int
+  unitPrice  Decimal  @db.Decimal(8,2)
+}
+
+model Payment {
+  id                String        @id @default(uuid())
+  orderId           String        @unique
+  order             Order         @relation(fields: [orderId], references: [id])
+  studentId         String
+  student           Student       @relation(fields: [studentId], references: [id])
+  type              PaymentType
+  cashfreeOrderId   String?
+  cashfreePaymentId String?
+  status            PaymentStatus @default(PENDING)
+  amount            Decimal       @db.Decimal(8,2)
+  createdAt         DateTime      @default(now())
+}
+
+model Staff {
+  id          String   @id @default(uuid())
+  name        String
+  email       String   @unique
+  password    String
+  cafeteriaId String
+  createdAt   DateTime @default(now())
+}
+
+model PushSubscription {
+  id           String   @id @default(uuid())
+  studentId    String   @unique
+  subscription String
+  createdAt    DateTime @default(now())
+}
+
+enum SubStatus     { ACTIVE INACTIVE }
+enum FoodSection   { SNACK COOK_TO_ORDER }
+enum PaymentStatus { PENDING PAID FAILED EXPIRED }
+enum OrderStatus   { AWAITING_PAYMENT CONFIRMED PREPARING READY COLLECTED CANCELLED }
+enum PaymentType   { ORDER SUBSCRIPTION }
+
+Order number format: "AF-" + YYYY + "-" + zero-padded 4-digit daily sequence
+Example: "AF-2024-0042"
+Generate in POST /api/orders: SELECT COUNT(*) today's orders + 1 → format string
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SEED DATA (prisma/seed.ts)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+3 Cafeterias:
+  1. Samridhi         — Ground Floor, Main Block
+  2. Canteen Main     — Near Admin Block
+  3. E Block Canteen  — E Block, Ground Floor
+
+SNACK section (etaMinutes: 0, section: SNACK):
+  Samosa ₹10 | Bread Omelette ₹25 | Veg Puff ₹15
+  Masala Chai ₹10 | Filter Coffee ₹15 | Frooti ₹20
+  Biscuit/Parle-G ₹5 | Banana ₹10
+
+COOK_TO_ORDER section (section: COOK_TO_ORDER):
+  Plain Dosa ₹30 10min | Masala Dosa ₹40 12min
+  Idli (2 pcs) ₹20 8min | Vada (2 pcs) ₹20 8min
+  Pongal ₹25 10min | Upma ₹20 8min
+  Rava Idli ₹25 10min | Curd Rice ₹30 5min
+  Lemon Rice ₹25 5min | Vegetable Rice ₹40 15min
+  Chapati with Sabzi ₹35 15min | Parotta with Salna ₹40 15min
+
+Combos (isCombo: true):
+  Student Combo (Idli+Vada+Coffee) ₹45 — saves ₹10
+  Dosa Combo (Masala Dosa+Coffee) ₹50 — saves ₹5
+  South Indian Breakfast (Idli+Vada+Pongal+Chai) ₹65 — saves ₹10
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PAGE IMPLEMENTATIONS (DETAILED)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+PAGE 1 — Barcode Scanner Login (app/(auth)/login/page.tsx)
+────────────────────────────────────────────────────────
+Background: radial gradient from #FF6B35 at top to #1A1A2E at bottom
+Logo: "Amrita Feast" in white, 28px, centered, with fork+plate SVG icon
+
+Camera view: full screen height
+Overlay: dark vignette with a 280×180 transparent scan zone
+Scan zone: 4 animated corner brackets in #FF6B35 (Framer Motion pulse loop)
+Scan line: 2px gradient line (#FF6B35 → transparent) sweeping top→bottom in loop
+
+On scan success:
+  1. Stop scanner
+  2. Play Lottie scan-success animation (green checkmark burst)
+  3. Validate regex /^[A-Z]{2}\.EN\.U4[A-Z]{3}\d{2}\d{3}$/
+  4. POST /api/auth/barcode-login
+  5. Show success toast: "Welcome back! Redirecting..."
+  6. router.push('/cafeteria') with page transition
+
+Bottom sheet trigger: "Can't scan your ID?" button
+  → Framer Motion slide-up sheet with manual registration number input
+  → Input styled with orange focus ring
+  → "Login" CTA button in #FF6B35
+
+PAGE 2 — Cafeteria Selection (app/(app)/cafeteria/page.tsx)
+──────────────────────────────────────────────────────────
+Background: #FFF8F4 (warm off-white)
+Header: "Good morning, [Name]!" with wave emoji, subtext "Which canteen today?"
+
+3 cafeteria cards — React Three Fiber 3D:
+  Canvas: full width, 380px height
+  Each card: RoundedBox with MeshPhysicalMaterial
+    color: warm gradient approximated via vertex colors
+    roughness: 0.15, metalness: 0.05
+  Card content (HTML overlay, not 3D text): cafeteria name, location pin, wait time badge
+  Tilt: pointer move or device gyroscope → ±15deg rotation, lerp 0.08
+  On hover: point light intensity increases (glow effect)
+  On click: scale 0.95 → navigate → scale back
+
+Wait time badge: color coded
+  <10min: #ECFDF5 text #065F46 (green)
+  10-20min: #FEF3C7 text #92400E (amber)
+  >20min: #FEF2F2 text #991B1B (red)
+
+PAGE 3 — Menu (app/(app)/menu/page.tsx)
+───────────────────────────────────────
+Header (sticky):
+  Left: back arrow + cafeteria name (truncated)
+  Right: cart icon button with orange badge (item count)
+  Background: #FFFFFF with shadow-sm on scroll
+
+Sections in order:
+
+1. "1-Click Combos" horizontal scroll strip
+   Card: gradient border (orange→purple), 160×200px
+   Shows: combo name, items included, total price, savings badge in green
+   Shimmer loading skeleton while fetching
+
+2. "Special Offers" (Priority Pass holders only)
+   Non-subscribers: cards blurred (CSS filter: blur(4px)), 
+   lock icon overlay, "Get Priority Pass" CTA in center
+   Subscribers: normal cards with gold star badge
+
+3. Food tabs: "Ready Now" | "Cook to Order"
+   Tab bar: white background, orange animated underline that slides on switch
+   Framer Motion AnimatePresence for tab content fade
+
+4. Food card grid (2 cols mobile, 3 cols desktop):
+   Card anatomy:
+     - Image: 100% width, aspect-ratio 4:3, object-fit cover, rounded top
+     - Section badge: top-left corner (amber for SNACK, blue for cook)
+     - ETA badge: top-right corner (only for COOK_TO_ORDER items)
+     - Name: 15px, font-weight 600, #1A1A2E
+     - Category: 12px, #6B7280
+     - Price: 18px, font-weight 800, #FF6B35
+     - Add button: full width, #FF6B35 background, white text
+
+Add to cart animation sequence:
+  1. Card: spring scale 1→1.06→1
+  2. "+" button: morphs to quantity selector (+/- with spring layout animation)
+  3. Food emoji clone: flies from card position to cart icon
+     (absolute positioned, animates x/y/scale/opacity via Framer Motion)
+  4. Cart badge: scale 1→1.5→1, number increments
+  5. Haptic: navigator.vibrate(50)
+  6. Toast: "[Item name] added to cart" (Sonner, bottom-center)
+
+PAGE 4 — Cart Sheet
+───────────────────
+Mobile: Framer Motion bottom sheet, drag handle pill at top
+Desktop: Fixed right sidebar (380px), no drag needed
+
+Sheet background: #FFFFFF
+Handle: 40×4px pill, #E5E7EB centered
+Header: "Your Order" + item count badge + "Clear all" link
+
+Items grouped by section:
+  Section divider: amber pill for "Ready Now", blue for "Cook to Order"
+  Each item row:
+    - Small image thumbnail (48×48px, rounded-md)
+    - Name + category
+    - Quantity controls (-, count, +) with spring animation
+    - Price (qty × unit)
+    - Remove icon
+
+Footer (sticky inside sheet):
+  Subtotal row
+  GST 5% row  
+  Grand Total row (larger, bold, orange price)
+  "Proceed to Pay ₹XXX" — full width, #FF6B35 button, 52px height
+
+Empty state: Lottie empty-plate animation + "Your cart is empty" + "Browse Menu" CTA
+
+PAGE 5 — Checkout + Timer (app/(app)/checkout/page.tsx)
+────────────────────────────────────────────────────────
+On mount: POST /api/orders → get { orderId, orderNumber, tokenNumber, 
+          cashfreeSessionId, expiresAt, totalAmount }
+
+Layout (mobile stacked, desktop 2-column):
+
+LEFT COLUMN — Order Summary:
+  Header: "Order #AF-2024-0042" in monospace font, orange color
+  Cafeteria name + location
+  Item list: thumbnail, name, qty, price
+  Total breakdown (subtotal, GST, total)
+
+RIGHT COLUMN — Payment + Timer:
+  Section: "Complete payment before timer runs out"
+  
+  Countdown timer (Lottie ring animation):
+    Ring depletes from full to empty over 300 seconds
+    Colors: >120s → #10B981 (green), 30-120s → #F59E0B (amber), <30s → #EF4444 (red)
+    Time text inside ring: MM:SS format, font-weight 800
+    At <30s: shake animation on the time text
+    Background ring: #F3F4F6, progress ring: animated stroke-dashoffset
+  
+  Payment button: "Pay ₹XXX with UPI" — large, orange, full width
+  
+  On timer expiry:
+    Modal: dark overlay, card with "Order expired"
+    Text: "Your 5-minute window has closed. Items released."
+    Button: "Start new order" → clears cart → /menu
+
+PAGE 6 — Simulated UPI Payment (CRITICAL — THIS MUST BE A FULL PAGE/SHEET)
+─────────────────────────────────────────────────────────────────────────────
+DO NOT just show a notification. Show a complete payment experience.
+
+Trigger: "Pay ₹XXX with UPI" button → Cashfree .checkout() opens
+OR as fallback (sandbox simulation):
+
+Show a full-screen payment sheet that slides up with:
+
+  Header: "Complete Payment" + close X
+  Amount: "₹85.00" in large text (36px, bold, orange)
+  Order ref: "AF-2024-0042"
+
+  UPI App Grid (2×3 tiles):
+    [ GPay logo + "Google Pay" ]  [ PhonePe logo + "PhonePe" ]
+    [ Paytm logo + "Paytm"     ]  [ BHIM logo + "BHIM"       ]
+    [ Amazon Pay               ]  [ Other UPI ID...           ]
+
+  Divider: "— or pay via UPI ID —"
+  
+  UPI ID input: placeholder "yourname@upi"
+  Pay button: "Pay ₹85.00" in orange
+
+  Divider: "— or scan QR code —"
+  
+  QR code: generate a placeholder QR SVG (grid of squares)
+  Text: "Open any UPI app and scan"
+  
+  Simulated flow when user taps any UPI app tile:
+    1. Tile scales down (press effect)
+    2. Loading spinner 1.5s: "Redirecting to [App Name]..."
+    3. Full screen "Processing Payment" overlay:
+       - Animated orange pulsing ring
+       - "Verifying with bank..."
+       - Progress bar fills over 2.5s
+    4. On completion: GREEN success overlay bursts in:
+       - Large checkmark (Lottie or CSS animation)
+       - "Payment Successful!"
+       - Amount: ₹85.00
+       - UPI Ref: auto-generated 12-digit number
+       - Button: "View Order" → /success
+
+PAGE 7 — Order Success (app/(app)/success/page.tsx)
+───────────────────────────────────────────────────
+Background: #FFF8F4 (warm)
+Full-screen Lottie confetti plays on mount (2 seconds)
+
+Then reveals with staggered animations (each element animates in 100ms apart):
+
+  Checkmark circle: #10B981 background, white check, scale 0→1.2→1
+
+  "Order Confirmed!" — 24px, bold
+
+  Order Number — monospace, #FF6B35:
+    "AF-2024-0042" slides in from right
+
+  Token card — elevated card, orange gradient border:
+    Label: "Your Token Number"
+    Number: counter animates from 0→42 (Framer Motion useSpring)
+    Font: 72px, weight 900, #FF6B35
+    Glow: box-shadow 0 0 32px rgba(255,107,53,0.3)
+
+  Cafeteria: "Pick up from Samridhi, Main Block"
+
+  ETA: "Ready in approximately 12 minutes"
+
+  Status pill: "Preparing" — pulsing dot + amber background
+
+  Two buttons:
+    Primary: "Track My Order" → /tracker/[orderId]
+    Secondary: "Order More Items" → /menu
+
+  Receipt download hint: "Order saved to My Orders"
+
+PAGE 8 — Live Order Tracker (app/(app)/tracker/[orderId]/page.tsx)
+───────────────────────────────────────────────────────────────────
+Supabase Realtime subscription on mount for order row changes.
+
+Header: Order #AF-2024-0042 + token badge
+
+Status stepper (vertical, centered):
+
+  Step 1 — CONFIRMED: checkmark, green, "Order received"
+    Sub-text: timestamp
+  
+  Step 2 — PREPARING: animated Lottie chef hat (loops while active), amber
+    "Being prepared in the kitchen"
+    Live ETA countdown if available
+  
+  Step 3 — READY: animated bell Lottie (rings), green
+    "Ready for pickup! Head to the counter"
+    On reaching this step: navigator.vibrate([200,100,200])
+  
+  Step 4 — COLLECTED: checkmark, green, "Enjoy your meal!"
+
+Connector lines: animate from gray to green as steps complete
+  (Framer Motion: scaleY 0→1 with origin "top")
+
+Active step dot: pulsing ring animation in step color
+
+On READY:
+  Full-width banner at top: "#FF6B35 background, white text"
+  "Your order is ready! Head to the counter now."
+  Push notification already sent.
+
+PAGE 9 — Staff Dashboard (app/staff/dashboard/page.tsx)
+────────────────────────────────────────────────────────
+Auth: separate login at /staff/login (email + password)
+
+Desktop: 3-column Kanban (equal width columns)
+Mobile: horizontal scroll Kanban or tabs
+
+Column colors:
+  CONFIRMED: blue header (#EEF4FF)
+  PREPARING: amber header (#FFFBEB) 
+  READY:     green header (#ECFDF5)
+
+Each order card:
+  Token: large (#42) orange, top-right
+  Order number: AF-2024-0042 (small, muted)
+  Student: first name
+  Items: "Masala Dosa × 1, Filter Coffee × 1"
+  Time: "3 min ago" (relative, auto-updates)
+  Action button:
+    CONFIRMED → "Start Preparing" (blue)
+    PREPARING → "Mark as Ready" (amber)  
+    READY → "Collected" (green)
+
+New order sound: HTMLAudioElement plays on Realtime insert event
+New order card: slides in with Framer Motion from top
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+API ROUTES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+POST /api/auth/barcode-login
+  Body: { barcodeRaw: string }
+  Validate regex: /^[A-Z]{2}\.EN\.U4[A-Z]{3}\d{2}\d{3}$/
+  Upsert Student, sign JWT (7d), set httpOnly cookie
+  Response: { student }
+
+POST /api/auth/manual-login
+  Body: { registrationNumber: string }
+  Same logic, no barcode parsing
+
+POST /api/auth/staff-login
+  Body: { email, password }
+  bcryptjs compare → JWT with role: STAFF
+
+GET /api/cafeterias
+  Returns: Cafeteria[] with isOpen, avgWaitMinutes
+
+GET /api/menu/[cafeteriaId]
+  Auth: JWT (to check subscription)
+  Returns: { combos, snacks, cookToOrder, specialOffers }
+  specialOffers.blurred = !student.subscriptionActive
+
+POST /api/orders
+  Auth: JWT required
+  Body: { cafeteriaId, items: [{ menuItemId, quantity }] }
+  Validate items belong to cafeteria
+  Calculate total server-side (never trust client prices)
+  Generate orderNumber: "AF-" + YYYY + "-" + padStart(count+1, 4, "0")
+  Generate tokenNumber: daily sequential count
+  expiresAt: new Date(Date.now() + 5 * 60 * 1000)
+  Create Cashfree order → return cashfreeSessionId
+  Response: { orderId, orderNumber, tokenNumber, cashfreeSessionId, expiresAt, totalAmount }
+
+DELETE /api/orders/[id]/expire
+  Auth: JWT (must own order)
+  paymentStatus = EXPIRED, orderStatus = CANCELLED
+
+PATCH /api/orders/[id]/status  
+  Auth: Staff JWT
+  Body: { status: "PREPARING" | "READY" | "COLLECTED" }
+  On READY: send Web Push to student
+
+POST /api/payments/cashfree-webhook
+  Verify HMAC-SHA256 signature
+  On SUCCESS: paymentStatus=PAID, orderStatus=CONFIRMED
+  Send push: "Payment confirmed! Token #X is being prepared."
+
+GET /api/orders/my
+  Auth: JWT
+  Returns last 10 orders with items and status
+
+POST /api/push/subscribe
+  Auth: JWT
+  Body: { subscription: PushSubscription }
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+PWA CONFIGURATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+public/manifest.json:
+{
+  "name": "Amrita Feast",
+  "short_name": "AmritaFeast",
+  "description": "Skip the canteen queue. Order from your classroom.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF8F4",
+  "theme_color": "#FF6B35",
+  "orientation": "portrait",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Order Now", "url": "/menu" },
+    { "name": "My Orders", "url": "/orders" }
+  ]
+}
+
+Install banner (src/components/layout/InstallBanner.tsx):
+  Listen for beforeinstallprompt (Android Chrome)
+  iOS: detect /iPhone|iPad|iPod/ in userAgent → show "Share → Add to Home Screen" instructions
+  Banner: slides up from bottom, orange background, white text, dismiss button
+  Store deferredPrompt in ref, call .prompt() on tap
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+TAILWIND CONFIG (tailwind.config.ts)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+extend.colors:
+  feast: {
+    primary:    '#FF6B35',
+    'primary-dark': '#C0410F',
+    warm:       '#FFB347',
+    bg:         '#FFF8F4',
+    'surface-dim': '#FFF0E8',
+  }
+  snack: { bg: '#FEF3C7', text: '#92400E' }
+  cook:  { bg: '#DBEAFE', text: '#1E40AF' }
+  combo: { bg: '#F3E8FF', text: '#6B21A8' }
+
+extend.fontFamily:
+  sans: ['Inter', ...defaultTheme.fontFamily.sans]
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+FILE STRUCTURE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+amrita-feast/
+├── app/
+│   ├── layout.tsx                 # Root layout, PWA meta, Inter font
+│   ├── page.tsx                   # Redirect to login or menu
+│   ├── (auth)/login/page.tsx      # Barcode scanner
+│   ├── (auth)/manual-login/page.tsx
+│   ├── (app)/layout.tsx           # Bottom nav + install banner
+│   ├── (app)/cafeteria/page.tsx   # 3D cafeteria selector
+│   ├── (app)/menu/page.tsx        # Full menu
+│   ├── (app)/checkout/page.tsx    # Timer + payment
+│   ├── (app)/payment/page.tsx     # UPI payment simulation page
+│   ├── (app)/success/page.tsx     # Animated order success
+│   ├── (app)/tracker/[id]/page.tsx
+│   ├── (app)/orders/page.tsx
+│   ├── (app)/profile/page.tsx
+│   ├── (app)/priority-pass/page.tsx
+│   ├── staff/login/page.tsx
+│   ├── staff/dashboard/page.tsx
+│   └── api/ [all routes above]
+├── src/
+│   ├── components/
+│   │   ├── ui/ (Button, Card, Badge, BottomSheet, Toast)
+│   │   ├── scanner/ (BarcodeScanner, ScannerOverlay)
+│   │   ├── cafeteria/ (CafeteriaCard3D)
+│   │   ├── menu/ (FoodCard, FoodSection, ComboCarousel, CartButton)
+│   │   ├── cart/ (CartSheet, CartItem)
+│   │   ├── checkout/ (CountdownTimer, UPIPaymentSheet)
+│   │   ├── payment/ (UPIAppGrid, QRCode, ProcessingOverlay, SuccessOverlay)
+│   │   ├── tracker/ (StatusStepper, TokenDisplay)
+│   │   ├── layout/ (BottomNav, Sidebar, InstallBanner, Header)
+│   │   └── lottie/ (ScanSuccess, CartBurst, OrderSuccess, ChefHat, CountdownRing)
+│   ├── store/ (cartStore, authStore, orderStore)
+│   ├── hooks/ (usePWAInstall, useBarcodeScanner, useCountdown, useRealtimeOrder, usePushNotifications)
+│   ├── lib/ (prisma, supabase, cashfree, jwt, push, validations)
+│   └── types/index.ts
+├── public/
+│   ├── manifest.json
+│   ├── icons/
+│   └── lottie/ (scan-success.json, cart-burst.json, etc.)
+├── prisma/ (schema.prisma, seed.ts)
+├── next.config.js
+├── tailwind.config.ts
+└── .env.local
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+LOADING & ERROR STATES (MANDATORY)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Every page MUST have:
+
+Loading skeleton: warm-tinted (#FFF0E8 base, #FFE4D0 shimmer)
+  Use Tailwind animate-pulse with feast-surface-dim
+  Skeleton shapes match actual content (card skeletons, text line skeletons)
+
+Error state:
+  Icon: sad-face or warning in orange
+  Message: human-readable, not "Error 500"
+  Button: "Try again" in orange → refetch via TanStack Query
+
+Empty state:
+  Illustration: simple SVG in orange/amber tones
+  Message: contextual ("Your cart is empty", "No orders yet", etc.)
+  CTA: relevant action button
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ENVIRONMENT VARIABLES (.env.local)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+DATABASE_URL=postgresql://postgres:password@db.xxx.supabase.co:5432/postgres
+NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=xxx
+SUPABASE_SERVICE_ROLE_KEY=xxx
+CASHFREE_APP_ID=xxx
+CASHFREE_SECRET_KEY=xxx
+CASHFREE_WEBHOOK_SECRET=xxx
+NEXT_PUBLIC_CASHFREE_ENV=sandbox
+NEXT_PUBLIC_VAPID_PUBLIC_KEY=xxx
+VAPID_PRIVATE_KEY=xxx
+JWT_SECRET=min-32-char-random-string
+NEXT_PUBLIC_APP_URL=https://your-app.vercel.app
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+INSTALL COMMANDS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+npx create-next-app@latest amrita-feast --typescript --tailwind --eslint --app --src-dir
+cd amrita-feast
+
+npm install framer-motion @react-three/fiber @react-three/drei three
+npm install zustand @tanstack/react-query
+npm install lottie-react html5-qrcode sonner lucide-react
+npm install next-pwa workbox-webpack-plugin
+npm install @cashfreepayments/cashfree-js
+npm install @supabase/supabase-js
+npm install prisma @prisma/client zod jose bcryptjs web-push
+npm install -D @types/three @types/bcryptjs @types/web-push ts-node
+
+npx prisma init
+npx prisma migrate dev --name init
+npx prisma db seed
+npx web-push generate-vapid-keys
+npm run dev
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+OUTPUT REQUEST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Generate these files completely (no stubs, production quality):
+
+1.  prisma/schema.prisma — complete with orderNumber field
+2.  prisma/seed.ts — all 3 cafeterias + all menu items
+3.  package.json — all dependencies
+4.  tailwind.config.ts — warm food color tokens
+5.  next.config.js — next-pwa config
+6.  public/manifest.json — warm theme_color
+7.  app/layout.tsx — Inter font, PWA meta, warm background
+8.  app/api/auth/barcode-login/route.ts
+9.  app/api/orders/route.ts — with orderNumber generation
+10. app/api/payments/cashfree-webhook/route.ts
+11. app/api/orders/[id]/status/route.ts
+12. app/(auth)/login/page.tsx — barcode scanner
+13. app/(app)/cafeteria/page.tsx — 3D cards
+14. app/(app)/menu/page.tsx — warm colors, animated tabs
+15. app/(app)/checkout/page.tsx — timer + pay button
+16. app/(app)/payment/page.tsx — FULL UPI SIMULATION PAGE
+    (UPI app grid, QR code, processing animation, success overlay)
+17. app/(app)/success/page.tsx — animated order ID reveal
+18. app/(app)/tracker/[orderId]/page.tsx — live stepper
+19. app/staff/dashboard/page.tsx — Kanban board
+20. src/components/payment/UPIPaymentSheet.tsx — full component
+21. src/components/checkout/CountdownTimer.tsx — ring animation
+22. src/store/cartStore.ts
+23. src/store/authStore.ts
+24. src/hooks/usePWAInstall.ts
+25. src/lib/prisma.ts, supabase.ts, cashfree.ts, push.ts, jwt.ts
+
+STRICT REQUIREMENTS:
+  - TypeScript strict mode, no 'any' types
+  - Every component responsive: mobile-first Tailwind with warm tokens
+  - Every API route: Zod input validation + try/catch + proper error responses
+  - Every page: loading skeleton (warm shimmer) + error state + empty state
+  - Payment: FULL simulated flow — not a notification, a complete page
+  - Colors: NEVER gray backgrounds — always warm tones from the palette above
+  - Animations: EVERY interaction animated with Framer Motion

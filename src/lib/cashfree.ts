@@ -1,7 +1,8 @@
-const CASHFREE_BASE_URL =
-  process.env.NEXT_PUBLIC_CASHFREE_ENV === 'production'
+function getCashfreeBaseUrl(): string {
+  return process.env.NEXT_PUBLIC_CASHFREE_ENV === 'production'
     ? 'https://api.cashfree.com/pg'
     : 'https://sandbox.cashfree.com/pg';
+}
 
 interface CreateCashfreeOrderParams {
   orderId: string;
@@ -13,7 +14,7 @@ interface CreateCashfreeOrderParams {
 }
 
 export async function createCashfreeOrder(params: CreateCashfreeOrderParams) {
-  const response = await fetch(`${CASHFREE_BASE_URL}/orders`, {
+  const response = await fetch(`${getCashfreeBaseUrl()}/orders`, {
     method: 'POST',
     headers: {
       'x-api-version': '2023-08-01',

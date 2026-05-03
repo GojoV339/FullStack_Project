@@ -33,11 +33,11 @@ export default function PriorityPassSection({ items, isVisible }: PriorityPassSe
     >
       {/* Section Header with Gold Gradient Badge */}
       <div className="flex items-center gap-2 mb-3">
-        <span className="gradient-gold px-3 py-1 rounded-full text-xs font-semibold text-white shadow-lg">
+        <span className="gradient-gold px-3 py-1 rounded-full text-xs font-semibold text-[#2D2D2D] shadow-lg">
           ⭐ PRIORITY PASS
         </span>
         {!hasActiveSubscription && (
-          <span className="text-white/30 text-xs">Exclusive items</span>
+          <span className="text-[#2D2D2D]/30 text-xs">Exclusive items</span>
         )}
       </div>
 
@@ -60,7 +60,7 @@ export default function PriorityPassSection({ items, isVisible }: PriorityPassSe
           transition={{ delay: 0.2 }}
           className="mt-4 glass-card p-4 text-center"
         >
-          <p className="text-sm text-white/70 mb-2">
+          <p className="text-sm text-[#2D2D2D]/70 mb-2">
             Get Priority Pass to unlock exclusive menu items
           </p>
           <button className="btn-primary text-sm py-2 px-4">

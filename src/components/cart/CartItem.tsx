@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Plus, Minus } from 'lucide-react';
+import { PlusCircle, MinusCircle } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 import type { CartItem as CartItemType } from '@/types';
 
@@ -29,17 +29,17 @@ export default function CartItem({ item }: CartItemProps) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, x: -20 }}
-      className="flex items-center gap-3 py-3 border-b border-white/5 last:border-0"
+      className="flex items-center gap-3 py-3 border-b border-[#eeeeee]/5 last:border-0"
     >
       {/* Item Info */}
       <div className="flex-1 min-w-0">
-        <h4 className="text-sm font-medium text-white/90 leading-tight line-clamp-2">
+        <h4 className="text-sm font-medium text-[#2D2D2D]/90 leading-tight line-clamp-2">
           {menuItem.name}
         </h4>
         <div className="flex items-center gap-2 mt-1">
-          <span className="text-xs text-white/50">₹{menuItem.price}</span>
-          <span className="text-xs text-white/30">×</span>
-          <span className="text-xs text-white/50">{quantity}</span>
+          <span className="text-xs text-[#2D2D2D]/50">₹{menuItem.price}</span>
+          <span className="text-xs text-[#2D2D2D]/30">×</span>
+          <span className="text-xs text-[#2D2D2D]/50">{quantity}</span>
         </div>
       </div>
 
@@ -47,7 +47,7 @@ export default function CartItem({ item }: CartItemProps) {
       <div className="flex items-center gap-2">
         <motion.div
           layout
-          className="flex items-center gap-2 bg-white/5 rounded-lg px-1"
+          className="flex items-center gap-2 bg-[#eeeeee]/5 rounded-lg px-1"
         >
           <motion.button
             whileTap={{ scale: 0.85 }}
@@ -55,13 +55,13 @@ export default function CartItem({ item }: CartItemProps) {
             className="w-7 h-7 flex items-center justify-center text-primary hover:bg-primary/10 rounded transition-colors"
             aria-label="Decrease quantity"
           >
-            <Minus size={14} />
+            <MinusCircle size={14} />
           </motion.button>
           <motion.span
             key={quantity}
             initial={{ scale: 0.5 }}
             animate={{ scale: 1 }}
-            className="text-sm font-bold text-white min-w-[16px] text-center"
+            className="text-sm font-bold text-[#2D2D2D] min-w-[16px] text-center"
           >
             {quantity}
           </motion.span>
@@ -71,7 +71,7 @@ export default function CartItem({ item }: CartItemProps) {
             className="w-7 h-7 flex items-center justify-center text-primary hover:bg-primary/10 rounded transition-colors"
             aria-label="Increase quantity"
           >
-            <Plus size={14} />
+            <PlusCircle size={14} />
           </motion.button>
         </motion.div>
 

@@ -24,7 +24,7 @@ export default function InstallBanner() {
         <div className="glass-card p-4 shadow-elevated">
           <button
             onClick={() => setIsDismissed(true)}
-            className="absolute top-3 right-3 text-white/40 hover:text-white"
+            className="absolute top-3 right-3 text-[#2D2D2D]/40 hover:text-[#2D2D2D]"
           >
             <X size={18} />
           </button>
@@ -35,20 +35,20 @@ export default function InstallBanner() {
             </div>
 
             <div className="flex-1 min-w-0">
-              <h3 className="font-semibold text-white text-sm">
+              <h3 className="font-semibold text-[#2D2D2D] text-sm">
                 Install Amrita Feast
               </h3>
 
               {isIOS ? (
-                <p className="text-white/50 text-xs mt-1 leading-relaxed">
+                <p className="text-[#2D2D2D]/50 text-xs mt-1 leading-relaxed">
                   Tap <Share size={12} className="inline mx-0.5" /> Share then{' '}
-                  <span className="font-medium text-white/70">
+                  <span className="font-medium text-[#2D2D2D]/70">
                     &quot;Add to Home Screen&quot;
                   </span>
                 </p>
               ) : (
                 <>
-                  <p className="text-white/50 text-xs mt-1">
+                  <p className="text-[#2D2D2D]/50 text-xs mt-1">
                     Get the full app experience — works offline!
                   </p>
                   <motion.button

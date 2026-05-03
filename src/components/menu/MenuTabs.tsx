@@ -54,7 +54,7 @@ export default function MenuTabs({ activeTab, onTabChange, items }: MenuTabsProp
             <span className="text-base">{tab.emoji}</span>
             <span
               className={`text-sm font-semibold transition-colors ${
-                activeTab === tab.id ? 'text-white' : 'text-white/60'
+                activeTab === tab.id ? 'text-[#2D2D2D]' : 'text-[#2D2D2D]/60'
               }`}
             >
               {tab.label}
@@ -66,8 +66,8 @@ export default function MenuTabs({ activeTab, onTabChange, items }: MenuTabsProp
                 animate={{ scale: 1 }}
                 className={`text-xs font-bold px-2 py-0.5 rounded-full ${
                   activeTab === tab.id
-                    ? 'bg-white/20 text-white'
-                    : 'bg-white/10 text-white/50'
+                    ? 'bg-[#eeeeee]/20 text-[#2D2D2D]'
+                    : 'bg-[#eeeeee]/10 text-[#2D2D2D]/50'
                 }`}
               >
                 {tab.count}

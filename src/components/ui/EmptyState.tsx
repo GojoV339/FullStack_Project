@@ -47,10 +47,10 @@ export default function EmptyState({
         initial={{ scale: 0.8 }}
         animate={{ scale: 1 }}
         transition={{ delay: 0.1, type: 'spring', stiffness: 200 }}
-        className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center mb-6 relative"
+        className="w-20 h-20 rounded-full bg-[#eeeeee]/5 flex items-center justify-center mb-6 relative"
       >
         <div className="absolute inset-0 rounded-full bg-primary/10 blur-xl" />
-        <Icon size={36} className="text-white/30 relative z-10" />
+        <Icon size={36} className="text-[#2D2D2D]/30 relative z-10" />
       </motion.div>
 
       {/* Title */}
@@ -58,7 +58,7 @@ export default function EmptyState({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.2 }}
-        className="text-lg font-semibold text-white/70 mb-2"
+        className="text-lg font-semibold text-[#2D2D2D]/70 mb-2"
       >
         {title}
       </motion.h3>
@@ -68,7 +68,7 @@ export default function EmptyState({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
-        className="text-sm text-white/40 max-w-xs"
+        className="text-sm text-[#2D2D2D]/40 max-w-xs"
       >
         {message}
       </motion.p>

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useRouter, usePathname } from 'next/navigation';
-import { ArrowLeft, Search, ShoppingCart } from 'lucide-react';
+import { ArrowLeft, Search, ShoppingBasket } from 'lucide-react';
 import { useCartStore } from '@/store/cartStore';
 
 interface HeaderProps {
@@ -42,14 +42,14 @@ export default function Header({
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={handleBack}
-                className="text-white/50 hover:text-white transition-colors"
+                className="text-[#2D2D2D]/50 hover:text-[#2D2D2D] transition-colors"
                 aria-label="Go back"
               >
                 <ArrowLeft size={22} />
               </motion.button>
             )}
             {title && (
-              <h1 className="text-lg font-bold text-white truncate">
+              <h1 className="text-lg font-bold text-[#2D2D2D] truncate">
                 {title}
               </h1>
             )}
@@ -63,14 +63,14 @@ export default function Header({
               className="relative ml-2"
               aria-label={`Cart with ${itemCount} items`}
             >
-              <div className="w-10 h-10 rounded-xl bg-white/5 hover:bg-white/10 transition-colors flex items-center justify-center">
-                <ShoppingCart size={20} className="text-white" />
+              <div className="w-10 h-10 rounded-xl bg-[#eeeeee]/5 hover:bg-[#eeeeee]/10 transition-colors flex items-center justify-center">
+                <ShoppingBasket size={20} className="text-[#2D2D2D]" />
                 {itemCount > 0 && (
                   <motion.span
                     key={itemCount}
                     initial={{ scale: 0 }}
                     animate={{ scale: 1 }}
-                    className="absolute -top-1 -right-1 bg-primary text-white text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center"
+                    className="absolute -top-1 -right-1 bg-primary text-[#2D2D2D] text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center"
                   >
                     {itemCount}
                   </motion.span>
@@ -85,7 +85,7 @@ export default function Header({
           <div className="relative">
             <Search
               size={16}
-              className="absolute left-3 top-1/2 -translate-y-1/2 text-white/30"
+              className="absolute left-3 top-1/2 -translate-y-1/2 text-[#2D2D2D]/30"
             />
             <input
               type="text"

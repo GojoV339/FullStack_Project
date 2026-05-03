@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useCartStore } from '@/store/cartStore';
-import { ShoppingCart } from 'lucide-react';
+import { ShoppingBasket } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 
 export default function CartButton() {
@@ -24,23 +24,23 @@ export default function CartButton() {
       <div className="gradient-primary rounded-2xl py-4 px-5 shadow-primary flex items-center justify-between">
         <div className="flex items-center gap-3">
           <div className="relative">
-            <ShoppingCart size={22} className="text-white" />
+            <ShoppingBasket size={22} className="text-[#2D2D2D]" />
             <motion.span
               key={itemCount}
               initial={{ scale: 0 }}
               animate={{ scale: 1 }}
-              className="absolute -top-2 -right-2 bg-white text-primary text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center"
+              className="absolute -top-2 -right-2 bg-[#eeeeee] text-primary text-[10px] font-bold rounded-full w-5 h-5 flex items-center justify-center"
             >
               {itemCount}
             </motion.span>
           </div>
-          <span className="text-white font-medium text-sm">
+          <span className="text-[#2D2D2D] font-medium text-sm">
             {itemCount} item{itemCount !== 1 ? 's' : ''}
           </span>
         </div>
         <div className="flex items-center gap-2">
-          <span className="text-white font-bold">₹{total}</span>
-          <span className="text-white/70 text-sm">→</span>
+          <span className="text-[#2D2D2D] font-bold">₹{total}</span>
+          <span className="text-[#2D2D2D]/70 text-sm">→</span>
         </div>
       </div>
     </motion.button>

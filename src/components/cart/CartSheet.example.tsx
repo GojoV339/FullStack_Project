@@ -58,11 +58,11 @@ export default function CartSheetExample() {
 
   return (
     <div className="min-h-screen p-4 bg-secondary">
-      <h1 className="text-2xl font-bold text-white mb-4">CartSheet Example</h1>
+      <h1 className="text-2xl font-bold text-[#2D2D2D] mb-4">CartSheet Example</h1>
       
       {/* Add Items Buttons */}
       <div className="space-y-2 mb-6">
-        <h2 className="text-lg font-semibold text-white mb-2">Add Items to Cart</h2>
+        <h2 className="text-lg font-semibold text-[#2D2D2D] mb-2">Add Items to Cart</h2>
         {exampleItems.map((item) => (
           <button
             key={item.id}

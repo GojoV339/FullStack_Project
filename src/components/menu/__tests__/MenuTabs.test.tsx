@@ -109,7 +109,7 @@ describe('MenuTabs', () => {
     const cookToOrderButton = screen.getByText('Cook to Order').closest('button');
 
     // Check active tab has white text
-    expect(readyNowButton?.querySelector('span[class*="text-white"]')).toBeInTheDocument();
+    expect(readyNowButton?.querySelector('span[class*="text-[#2D2D2D]"]')).toBeInTheDocument();
 
     // Switch to Cook to Order tab
     rerender(
@@ -120,7 +120,7 @@ describe('MenuTabs', () => {
       />
     );
 
-    expect(cookToOrderButton?.querySelector('span[class*="text-white"]')).toBeInTheDocument();
+    expect(cookToOrderButton?.querySelector('span[class*="text-[#2D2D2D]"]')).toBeInTheDocument();
   });
 
   it('should not display count badge when count is 0', () => {

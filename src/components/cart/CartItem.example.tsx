@@ -62,10 +62,10 @@ export default function CartItemExample() {
 
   return (
     <div className="min-h-screen p-4 bg-secondary">
-      <h1 className="text-2xl font-bold text-white mb-4">Cart Items Example</h1>
+      <h1 className="text-2xl font-bold text-[#2D2D2D] mb-4">Cart Items Example</h1>
       
       <div className="glass-card p-4 max-w-md">
-        <h2 className="text-lg font-semibold text-white mb-3">Your Cart</h2>
+        <h2 className="text-lg font-semibold text-[#2D2D2D] mb-3">Your Cart</h2>
         
         {/* Cart Items List */}
         <div className="space-y-2">
@@ -75,8 +75,8 @@ export default function CartItemExample() {
         </div>
         
         {/* Total */}
-        <div className="mt-4 pt-4 border-t border-white/10 flex justify-between items-center">
-          <span className="text-white/70 font-medium">Total</span>
+        <div className="mt-4 pt-4 border-t border-[#eeeeee]/10 flex justify-between items-center">
+          <span className="text-[#2D2D2D]/70 font-medium">Total</span>
           <span className="text-primary text-xl font-bold">
             ₹{cartItems.reduce((sum, item) => sum + item.menuItem.price * item.quantity, 0)}
           </span>

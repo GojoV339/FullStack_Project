@@ -25,9 +25,9 @@ export default function PaymentTimer({ expiresAt, onExpire }: PaymentTimerProps)
   const urgency = getUrgency();
 
   const urgencyConfig = {
-    normal: { ring: '#10B981', text: '#10B981', bg: 'rgba(16,185,129,0.1)' },
-    warning: { ring: '#F59E0B', text: '#F59E0B', bg: 'rgba(245,158,11,0.1)' },
-    critical: { ring: '#EF4444', text: '#EF4444', bg: 'rgba(239,68,68,0.1)' },
+    normal: { ring: '#6BAF92', text: '#2F6F73', bg: 'rgba(107,175,146,0.10)' },
+    warning: { ring: '#E6A23C', text: '#92400E', bg: 'rgba(230,162,60,0.10)' },
+    critical: { ring: '#D96C6C', text: '#991B1B', bg: 'rgba(217,108,108,0.10)' },
   };
 
   const colors = urgencyConfig[urgency];
@@ -36,30 +36,20 @@ export default function PaymentTimer({ expiresAt, onExpire }: PaymentTimerProps)
   return (
     <div
       className="glass-card p-5 text-center"
-      style={{ background: isExpired ? '#FEF2F2' : '#FFFFFF' }}
+      style={{ background: isExpired ? '#FEF2F2' : '#eeeeee' }}
     >
       <div className="flex items-center justify-center gap-2 mb-4">
-        <Clock size={15} className="text-[#6B7280]" />
-        <p className="text-[#6B7280] text-sm font-medium">
+        <Clock size={15} className="text-[#8A8A8A]" />
+        <p className="text-[#8A8A8A] text-sm font-medium">
           {isExpired ? 'Order expired' : 'Complete payment within'}
         </p>
       </div>
 
-      {/* Circular Progress Timer */}
       <div className="relative w-28 h-28 mx-auto mb-4">
         <svg className="w-full h-full -rotate-90" viewBox="0 0 120 120">
-          <circle
-            cx="60"
-            cy="60"
-            r="54"
-            fill="none"
-            stroke="rgba(255,107,53,0.1)"
-            strokeWidth="8"
-          />
+          <circle cx="60" cy="60" r="54" fill="none" stroke="rgba(181,3,70,0.12)" strokeWidth="8" />
           <motion.circle
-            cx="60"
-            cy="60"
-            r="54"
+            cx="60" cy="60" r="54"
             fill="none"
             stroke={colors.ring}
             strokeWidth="8"
@@ -70,7 +60,6 @@ export default function PaymentTimer({ expiresAt, onExpire }: PaymentTimerProps)
             transition={{ duration: 0.5, ease: 'easeInOut' }}
           />
         </svg>
-
         <div className="absolute inset-0 flex items-center justify-center">
           <motion.span
             className="text-2xl font-extrabold"
@@ -83,9 +72,8 @@ export default function PaymentTimer({ expiresAt, onExpire }: PaymentTimerProps)
         </div>
       </div>
 
-      {/* Progress Bar */}
       <div className="w-full max-w-xs mx-auto mb-3">
-        <div className="h-1.5 bg-[#FFF0E8] rounded-full overflow-hidden">
+        <div className="h-1.5 bg-[#e0e0e0] rounded-full overflow-hidden">
           <motion.div
             className="h-full rounded-full"
             style={{ backgroundColor: colors.ring, width: `${progress}%` }}
@@ -107,15 +95,11 @@ export default function PaymentTimer({ expiresAt, onExpire }: PaymentTimerProps)
         </motion.div>
       )}
 
-      {urgency === 'warning' && !isExpired && (
-        <p className="text-[#6B7280] text-sm">Please complete your payment soon</p>
-      )}
-
       {isExpired && (
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="text-[#EF4444] text-sm font-semibold"
+          className="text-[#D96C6C] text-sm font-semibold"
         >
           ⏰ Time&apos;s up! Order has expired
         </motion.div>

@@ -70,7 +70,7 @@ describe('PaymentTimer', () => {
       const futureDate = new Date(Date.now() + 300000);
       const { container } = render(<PaymentTimer expiresAt={futureDate} />);
 
-      const progressBar = container.querySelector('.h-2.bg-white\\/5');
+      const progressBar = container.querySelector('.h-2.bg-[#eeeeee]\\/5');
       expect(progressBar).toBeInTheDocument();
     });
   });

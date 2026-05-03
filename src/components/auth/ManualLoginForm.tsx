@@ -113,25 +113,25 @@ export default function ManualLoginForm({ isOpen, onClose }: ManualLoginFormProp
             <div className="glass-card rounded-t-3xl p-6 max-w-lg mx-auto">
               {/* Header */}
               <div className="flex items-center justify-between mb-6">
-                <h2 className="text-xl font-bold text-white">Manual Login</h2>
+                <h2 className="text-xl font-bold text-[#2D2D2D]">Manual Login</h2>
                 <button
                   onClick={handleClose}
                   disabled={isLoading}
-                  className="text-white/40 hover:text-white/70 transition-colors disabled:opacity-50"
+                  className="text-[#2D2D2D]/40 hover:text-[#2D2D2D]/70 transition-colors disabled:opacity-50"
                 >
                   <X size={24} />
                 </button>
               </div>
 
               {/* Description */}
-              <p className="text-white/50 text-sm mb-6">
+              <p className="text-[#2D2D2D]/50 text-sm mb-6">
                 Enter your Amrita registration number to continue
               </p>
 
               {/* Form */}
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
-                  <label className="text-white/60 text-xs font-medium mb-2 block">
+                  <label className="text-[#2D2D2D]/60 text-xs font-medium mb-2 block">
                     Registration Number
                   </label>
                   <input
@@ -150,7 +150,7 @@ export default function ManualLoginForm({ isOpen, onClose }: ManualLoginFormProp
                   
                   {/* Pattern hint */}
                   {!validationError && (
-                    <p className="text-white/30 text-xs mt-2">
+                    <p className="text-[#2D2D2D]/30 text-xs mt-2">
                       Format: XX.EN.U4XXX00000
                     </p>
                   )}
@@ -180,7 +180,7 @@ export default function ManualLoginForm({ isOpen, onClose }: ManualLoginFormProp
                       <motion.span
                         animate={{ rotate: 360 }}
                         transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                        className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full inline-block"
+                        className="w-5 h-5 border-2 border-[#eeeeee]/30 border-t-white rounded-full inline-block"
                       />
                       Logging in...
                     </span>

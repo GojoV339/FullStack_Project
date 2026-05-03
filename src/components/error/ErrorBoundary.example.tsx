@@ -20,8 +20,8 @@ function ProblematicComponent({ shouldThrow }: { shouldThrow: boolean }) {
 
   return (
     <div className="glass-card p-6">
-      <h3 className="text-white font-bold mb-2">Component Working Fine</h3>
-      <p className="text-white/60 text-sm">
+      <h3 className="text-[#2D2D2D] font-bold mb-2">Component Working Fine</h3>
+      <p className="text-[#2D2D2D]/60 text-sm">
         This component is rendering successfully. Click the button below to trigger an error.
       </p>
     </div>
@@ -34,7 +34,7 @@ export function BasicErrorBoundaryExample() {
 
   return (
     <div className="p-6 space-y-4">
-      <h2 className="text-xl font-bold text-white mb-4">Basic Error Boundary</h2>
+      <h2 className="text-xl font-bold text-[#2D2D2D] mb-4">Basic Error Boundary</h2>
       
       <motion.button
         whileTap={{ scale: 0.95 }}
@@ -57,7 +57,7 @@ export function SectionErrorBoundaryExample() {
 
   return (
     <div className="p-6 space-y-4">
-      <h2 className="text-xl font-bold text-white mb-4">Section Error Boundary</h2>
+      <h2 className="text-xl font-bold text-[#2D2D2D] mb-4">Section Error Boundary</h2>
       
       <motion.button
         whileTap={{ scale: 0.95 }}
@@ -83,8 +83,8 @@ export function CustomFallbackExample() {
 
   const customFallback = (
     <div className="glass-card p-6 text-center">
-      <h3 className="text-white font-bold mb-2">Custom Error UI</h3>
-      <p className="text-white/60 text-sm mb-4">
+      <h3 className="text-[#2D2D2D] font-bold mb-2">Custom Error UI</h3>
+      <p className="text-[#2D2D2D]/60 text-sm mb-4">
         This is a custom error fallback component.
       </p>
       <motion.button
@@ -99,7 +99,7 @@ export function CustomFallbackExample() {
 
   return (
     <div className="p-6 space-y-4">
-      <h2 className="text-xl font-bold text-white mb-4">Custom Fallback</h2>
+      <h2 className="text-xl font-bold text-[#2D2D2D] mb-4">Custom Fallback</h2>
       
       <motion.button
         whileTap={{ scale: 0.95 }}
@@ -123,7 +123,7 @@ export function MultipleErrorBoundariesExample() {
 
   return (
     <div className="p-6 space-y-6">
-      <h2 className="text-xl font-bold text-white mb-4">Multiple Error Boundaries</h2>
+      <h2 className="text-xl font-bold text-[#2D2D2D] mb-4">Multiple Error Boundaries</h2>
       
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {/* Section 1 */}
@@ -163,7 +163,7 @@ export function MultipleErrorBoundariesExample() {
         </div>
       </div>
 
-      <p className="text-white/40 text-sm text-center">
+      <p className="text-[#2D2D2D]/40 text-sm text-center">
         Notice how errors in one section don't affect the other section
       </p>
     </div>
@@ -176,10 +176,10 @@ export default function ErrorBoundaryDemo() {
     <div className="min-h-screen gradient-dark">
       <div className="max-w-4xl mx-auto py-12 space-y-12">
         <div className="text-center mb-12">
-          <h1 className="text-3xl font-bold text-white mb-2">
+          <h1 className="text-3xl font-bold text-[#2D2D2D] mb-2">
             Error Boundary <span className="text-gradient">Examples</span>
           </h1>
-          <p className="text-white/60">
+          <p className="text-[#2D2D2D]/60">
             Interactive examples showing how error boundaries work
           </p>
         </div>

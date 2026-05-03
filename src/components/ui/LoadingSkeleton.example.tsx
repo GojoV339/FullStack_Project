@@ -12,7 +12,7 @@ export default function LoadingSkeletonExamples() {
     <div className="min-h-screen bg-secondary p-6 space-y-12">
       {/* Cafeteria Cards Loading */}
       <section>
-        <h2 className="text-2xl font-bold text-white mb-4">
+        <h2 className="text-2xl font-bold text-[#2D2D2D] mb-4">
           Cafeteria Cards Loading (3 skeletons)
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -22,7 +22,7 @@ export default function LoadingSkeletonExamples() {
 
       {/* Menu Items Loading */}
       <section>
-        <h2 className="text-2xl font-bold text-white mb-4">
+        <h2 className="text-2xl font-bold text-[#2D2D2D] mb-4">
           Menu Items Loading (6 skeletons)
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -32,7 +32,7 @@ export default function LoadingSkeletonExamples() {
 
       {/* Order Cards Loading */}
       <section>
-        <h2 className="text-2xl font-bold text-white mb-4">
+        <h2 className="text-2xl font-bold text-[#2D2D2D] mb-4">
           Order Cards Loading (5 skeletons)
         </h2>
         <div className="space-y-4 max-w-2xl">
@@ -42,20 +42,20 @@ export default function LoadingSkeletonExamples() {
 
       {/* Single Skeleton Examples */}
       <section>
-        <h2 className="text-2xl font-bold text-white mb-4">
+        <h2 className="text-2xl font-bold text-[#2D2D2D] mb-4">
           Single Skeleton Examples
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div>
-            <h3 className="text-sm text-white/60 mb-2">Cafeteria</h3>
+            <h3 className="text-sm text-[#2D2D2D]/60 mb-2">Cafeteria</h3>
             <LoadingSkeleton variant="cafeteria" count={1} />
           </div>
           <div>
-            <h3 className="text-sm text-white/60 mb-2">Menu Item</h3>
+            <h3 className="text-sm text-[#2D2D2D]/60 mb-2">Menu Item</h3>
             <LoadingSkeleton variant="menu" count={1} />
           </div>
           <div>
-            <h3 className="text-sm text-white/60 mb-2">Order</h3>
+            <h3 className="text-sm text-[#2D2D2D]/60 mb-2">Order</h3>
             <LoadingSkeleton variant="order" count={1} />
           </div>
         </div>

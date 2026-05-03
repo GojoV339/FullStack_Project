@@ -29,7 +29,7 @@ export default function MenuPageWithSearchExample() {
             <div key={item.id}>{item.name}</div>
           ))
         ) : (
-          <div className="col-span-2 text-center text-white/60 py-8">
+          <div className="col-span-2 text-center text-[#2D2D2D]/60 py-8">
             No items match your search
           </div>
         )}

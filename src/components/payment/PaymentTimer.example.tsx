@@ -34,58 +34,58 @@ export default function PaymentTimerExample() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] p-6">
-      <h1 className="text-2xl font-bold text-white mb-8 text-center">
+      <h1 className="text-2xl font-bold text-[#2D2D2D] mb-8 text-center">
         PaymentTimer Component Examples
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
         {/* Example 1: Normal State (5 minutes) */}
         <div className="glass-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">
+          <h2 className="text-lg font-semibold text-[#2D2D2D] mb-4">
             Normal State (5 minutes)
           </h2>
           <PaymentTimer expiresAt={fiveMinutesFromNow} />
-          <p className="text-white/50 text-sm mt-4">
+          <p className="text-[#2D2D2D]/50 text-sm mt-4">
             Green progress ring indicates plenty of time remaining
           </p>
         </div>
 
         {/* Example 2: Warning State (2 minutes) */}
         <div className="glass-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">
+          <h2 className="text-lg font-semibold text-[#2D2D2D] mb-4">
             Warning State (2 minutes)
           </h2>
           <PaymentTimer expiresAt={twoMinutesFromNow} />
-          <p className="text-white/50 text-sm mt-4">
+          <p className="text-[#2D2D2D]/50 text-sm mt-4">
             Amber progress ring with "complete payment soon" message
           </p>
         </div>
 
         {/* Example 3: Critical State (30 seconds) */}
         <div className="glass-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">
+          <h2 className="text-lg font-semibold text-[#2D2D2D] mb-4">
             Critical State (30 seconds)
           </h2>
           <PaymentTimer expiresAt={thirtySecondsFromNow} />
-          <p className="text-white/50 text-sm mt-4">
+          <p className="text-[#2D2D2D]/50 text-sm mt-4">
             Red progress ring with pulsing animation and urgent warning
           </p>
         </div>
 
         {/* Example 4: Expired State */}
         <div className="glass-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">
+          <h2 className="text-lg font-semibold text-[#2D2D2D] mb-4">
             Expired State
           </h2>
           <PaymentTimer expiresAt={pastDate} />
-          <p className="text-white/50 text-sm mt-4">
+          <p className="text-[#2D2D2D]/50 text-sm mt-4">
             Shows expired message when timer reaches zero
           </p>
         </div>
 
         {/* Example 5: With onExpire Callback */}
         <div className="glass-card p-6 md:col-span-2">
-          <h2 className="text-lg font-semibold text-white mb-4">
+          <h2 className="text-lg font-semibold text-[#2D2D2D] mb-4">
             With onExpire Callback
           </h2>
           <PaymentTimer
@@ -99,7 +99,7 @@ export default function PaymentTimerExample() {
               </p>
             </div>
           )}
-          <p className="text-white/50 text-sm mt-4">
+          <p className="text-[#2D2D2D]/50 text-sm mt-4">
             This timer will trigger the onExpire callback after 10 seconds
           </p>
         </div>
@@ -107,9 +107,9 @@ export default function PaymentTimerExample() {
 
       {/* Usage Code Example */}
       <div className="glass-card p-6 max-w-4xl mx-auto mt-8">
-        <h2 className="text-lg font-semibold text-white mb-4">Usage Example</h2>
+        <h2 className="text-lg font-semibold text-[#2D2D2D] mb-4">Usage Example</h2>
         <pre className="bg-black/30 p-4 rounded-lg overflow-x-auto">
-          <code className="text-sm text-white/70">
+          <code className="text-sm text-[#2D2D2D]/70">
 {`import PaymentTimer from '@/components/payment/PaymentTimer';
 
 // In your checkout page
@@ -137,8 +137,8 @@ const handleExpire = async () => {
 
       {/* Features List */}
       <div className="glass-card p-6 max-w-4xl mx-auto mt-8">
-        <h2 className="text-lg font-semibold text-white mb-4">Features</h2>
-        <ul className="space-y-2 text-white/70 text-sm">
+        <h2 className="text-lg font-semibold text-[#2D2D2D] mb-4">Features</h2>
+        <ul className="space-y-2 text-[#2D2D2D]/70 text-sm">
           <li className="flex items-start gap-2">
             <span className="text-success">✓</span>
             <span>Circular progress ring with smooth animations</span>

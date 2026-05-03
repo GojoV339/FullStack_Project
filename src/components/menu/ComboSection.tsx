@@ -25,7 +25,7 @@ export default function ComboSection({ items, isVisible }: ComboSectionProps) {
       {/* Section Header */}
       <div className="flex items-center gap-2 mb-3">
         <span className="section-badge-combo">🎁 COMBOS</span>
-        <span className="text-white/30 text-xs">Save more!</span>
+        <span className="text-[#2D2D2D]/30 text-xs">Save more!</span>
       </div>
 
       {/* Horizontal Scrollable Container */}

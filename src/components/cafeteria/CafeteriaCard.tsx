@@ -50,7 +50,7 @@ function AnimatedPlane({ tilt, isHovered }: { tilt: { x: number; y: number }; is
     <mesh ref={meshRef}>
       <planeGeometry args={[2, 1.2, 32, 32]} />
       <meshStandardMaterial
-        color="#FF6B35"
+        color="#b50346"
         transparent
         opacity={0.1}
         wireframe={false}
@@ -159,8 +159,8 @@ export default function CafeteriaCard({ cafeteria, onClick }: CafeteriaCardProps
                   Open Now
                 </span>
               ) : (
-                <span className="inline-flex items-center gap-1.5 bg-white/10 text-white/50 px-3 py-1 rounded-full text-xs font-semibold">
-                  <span className="w-1.5 h-1.5 bg-white/50 rounded-full" />
+                <span className="inline-flex items-center gap-1.5 bg-[#eeeeee]/10 text-[#2D2D2D]/50 px-3 py-1 rounded-full text-xs font-semibold">
+                  <span className="w-1.5 h-1.5 bg-[#eeeeee]/50 rounded-full" />
                   Closed
                 </span>
               )}
@@ -169,10 +169,10 @@ export default function CafeteriaCard({ cafeteria, onClick }: CafeteriaCardProps
 
           {/* Cafeteria Name */}
           <div>
-            <h3 className="text-2xl font-bold text-white mb-1">
+            <h3 className="text-2xl font-bold text-[#2D2D2D] mb-1">
               {cafeteria.name}
             </h3>
-            <div className="flex items-center gap-1.5 text-white/60 text-sm">
+            <div className="flex items-center gap-1.5 text-[#2D2D2D]/60 text-sm">
               <MapPin size={14} />
               <span>{cafeteria.location}</span>
             </div>
@@ -180,7 +180,7 @@ export default function CafeteriaCard({ cafeteria, onClick }: CafeteriaCardProps
 
           {/* Wait Time */}
           {cafeteria.isOpen && (
-            <div className="flex items-center gap-2 text-white/80">
+            <div className="flex items-center gap-2 text-[#2D2D2D]/80">
               <Clock size={16} className="text-accent" />
               <span className="text-sm">
                 ~{cafeteria.avgWaitMinutes} min wait

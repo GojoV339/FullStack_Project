@@ -67,7 +67,7 @@ describe('Sidebar', () => {
     render(<Sidebar />);
     
     const homeLink = screen.getByText('Home').closest('div');
-    expect(homeLink).toHaveClass('text-white');
+    expect(homeLink).toHaveClass('text-[#2D2D2D]');
   });
 
   it('should render logout button', () => {

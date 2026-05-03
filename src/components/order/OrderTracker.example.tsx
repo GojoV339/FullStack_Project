@@ -14,7 +14,7 @@ export default function OrderTrackerExample() {
   return (
     <div className="min-h-screen bg-secondary p-6">
       <div className="max-w-2xl mx-auto">
-        <h1 className="text-2xl font-bold text-white mb-6">
+        <h1 className="text-2xl font-bold text-[#2D2D2D] mb-6">
           Order Tracker Example
         </h1>
 
@@ -23,10 +23,10 @@ export default function OrderTrackerExample() {
 
         {/* Usage Notes */}
         <div className="mt-8 glass-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">
+          <h2 className="text-lg font-semibold text-[#2D2D2D] mb-4">
             Component Features
           </h2>
-          <ul className="space-y-2 text-white/70 text-sm">
+          <ul className="space-y-2 text-[#2D2D2D]/70 text-sm">
             <li>✅ Real-time order status updates via Supabase Realtime</li>
             <li>✅ Prominent display of Order Number and Token Number</li>
             <li>✅ Vertical stepper with 5 status stages</li>
@@ -41,43 +41,43 @@ export default function OrderTrackerExample() {
 
         {/* Status Stages */}
         <div className="mt-6 glass-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">
+          <h2 className="text-lg font-semibold text-[#2D2D2D] mb-4">
             Order Status Stages
           </h2>
           <div className="space-y-3 text-sm">
             <div className="flex items-start gap-3">
               <span className="text-warning font-semibold">1.</span>
               <div>
-                <p className="text-white font-medium">AWAITING_PAYMENT</p>
-                <p className="text-white/50">Complete payment to confirm order</p>
+                <p className="text-[#2D2D2D] font-medium">AWAITING_PAYMENT</p>
+                <p className="text-[#2D2D2D]/50">Complete payment to confirm order</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <span className="text-success font-semibold">2.</span>
               <div>
-                <p className="text-white font-medium">CONFIRMED</p>
-                <p className="text-white/50">Your order has been received</p>
+                <p className="text-[#2D2D2D] font-medium">CONFIRMED</p>
+                <p className="text-[#2D2D2D]/50">Your order has been received</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <span className="text-primary font-semibold">3.</span>
               <div>
-                <p className="text-white font-medium">PREPARING</p>
-                <p className="text-white/50">Your food is being prepared</p>
+                <p className="text-[#2D2D2D] font-medium">PREPARING</p>
+                <p className="text-[#2D2D2D]/50">Your food is being prepared</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
               <span className="text-success font-semibold">4.</span>
               <div>
-                <p className="text-white font-medium">READY</p>
-                <p className="text-white/50">Your order is ready! Please collect</p>
+                <p className="text-[#2D2D2D] font-medium">READY</p>
+                <p className="text-[#2D2D2D]/50">Your order is ready! Please collect</p>
               </div>
             </div>
             <div className="flex items-start gap-3">
-              <span className="text-white/50 font-semibold">5.</span>
+              <span className="text-[#2D2D2D]/50 font-semibold">5.</span>
               <div>
-                <p className="text-white font-medium">COLLECTED</p>
-                <p className="text-white/50">Order completed. Enjoy your meal!</p>
+                <p className="text-[#2D2D2D] font-medium">COLLECTED</p>
+                <p className="text-[#2D2D2D]/50">Order completed. Enjoy your meal!</p>
               </div>
             </div>
           </div>
@@ -85,12 +85,12 @@ export default function OrderTrackerExample() {
 
         {/* Integration Notes */}
         <div className="mt-6 glass-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">
+          <h2 className="text-lg font-semibold text-[#2D2D2D] mb-4">
             Integration Guide
           </h2>
-          <div className="space-y-3 text-sm text-white/70">
+          <div className="space-y-3 text-sm text-[#2D2D2D]/70">
             <p>
-              <strong className="text-white">Props:</strong>
+              <strong className="text-[#2D2D2D]">Props:</strong>
             </p>
             <ul className="list-disc list-inside space-y-1 ml-4">
               <li>
@@ -100,7 +100,7 @@ export default function OrderTrackerExample() {
             </ul>
 
             <p className="mt-4">
-              <strong className="text-white">Real-time Updates:</strong>
+              <strong className="text-[#2D2D2D]">Real-time Updates:</strong>
             </p>
             <p>
               The component automatically subscribes to Supabase Realtime updates
@@ -109,7 +109,7 @@ export default function OrderTrackerExample() {
             </p>
 
             <p className="mt-4">
-              <strong className="text-white">Animations:</strong>
+              <strong className="text-[#2D2D2D]">Animations:</strong>
             </p>
             <ul className="list-disc list-inside space-y-1 ml-4">
               <li>Pulsing animation on active status stage</li>
@@ -120,7 +120,7 @@ export default function OrderTrackerExample() {
             </ul>
 
             <p className="mt-4">
-              <strong className="text-white">Haptic Feedback:</strong>
+              <strong className="text-[#2D2D2D]">Haptic Feedback:</strong>
             </p>
             <p>
               When the order status changes to READY, the component triggers

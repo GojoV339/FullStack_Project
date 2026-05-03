@@ -57,7 +57,7 @@ export default function ComboSectionExample() {
 
   return (
     <div className="min-h-screen pb-32">
-      <h1 className="text-2xl font-bold text-white p-4">Menu Page</h1>
+      <h1 className="text-2xl font-bold text-[#2D2D2D] p-4">Menu Page</h1>
       
       {/* ComboSection - Hidden when search is active */}
       <ComboSection items={comboItems} isVisible={isVisible} />

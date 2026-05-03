@@ -37,18 +37,18 @@ export default function LoadingSkeleton({
             className="glass-card p-6 space-y-4"
           >
             {/* Image placeholder */}
-            <div className="h-40 bg-white/5 rounded-lg shimmer" />
+            <div className="h-40 bg-[#eeeeee]/5 rounded-lg shimmer" />
             
             {/* Title placeholder */}
             <div className="space-y-2">
-              <div className="h-6 bg-white/5 rounded-lg shimmer w-3/4" />
-              <div className="h-4 bg-white/5 rounded-lg shimmer w-1/2" />
+              <div className="h-6 bg-[#eeeeee]/5 rounded-lg shimmer w-3/4" />
+              <div className="h-4 bg-[#eeeeee]/5 rounded-lg shimmer w-1/2" />
             </div>
             
             {/* Status badges */}
             <div className="flex gap-2">
-              <div className="h-6 bg-white/5 rounded-full shimmer w-20" />
-              <div className="h-6 bg-white/5 rounded-full shimmer w-24" />
+              <div className="h-6 bg-[#eeeeee]/5 rounded-full shimmer w-20" />
+              <div className="h-6 bg-[#eeeeee]/5 rounded-full shimmer w-24" />
             </div>
           </motion.div>
         ))}
@@ -68,18 +68,18 @@ export default function LoadingSkeleton({
             className="glass-card overflow-hidden"
           >
             {/* Food image placeholder */}
-            <div className="h-28 bg-white/5 shimmer" />
+            <div className="h-28 bg-[#eeeeee]/5 shimmer" />
             
             {/* Info section */}
             <div className="p-3 space-y-2">
               {/* Name placeholder */}
-              <div className="h-4 bg-white/5 rounded shimmer w-full" />
-              <div className="h-4 bg-white/5 rounded shimmer w-2/3" />
+              <div className="h-4 bg-[#eeeeee]/5 rounded shimmer w-full" />
+              <div className="h-4 bg-[#eeeeee]/5 rounded shimmer w-2/3" />
               
               {/* Price and button placeholder */}
               <div className="flex items-center justify-between mt-2">
-                <div className="h-5 bg-white/5 rounded shimmer w-12" />
-                <div className="h-8 w-8 bg-white/5 rounded-lg shimmer" />
+                <div className="h-5 bg-[#eeeeee]/5 rounded shimmer w-12" />
+                <div className="h-8 w-8 bg-[#eeeeee]/5 rounded-lg shimmer" />
               </div>
             </div>
           </motion.div>
@@ -101,20 +101,20 @@ export default function LoadingSkeleton({
           >
             {/* Order header */}
             <div className="flex items-center justify-between">
-              <div className="h-5 bg-white/5 rounded shimmer w-32" />
-              <div className="h-6 bg-white/5 rounded-full shimmer w-20" />
+              <div className="h-5 bg-[#eeeeee]/5 rounded shimmer w-32" />
+              <div className="h-6 bg-[#eeeeee]/5 rounded-full shimmer w-20" />
             </div>
             
             {/* Order details */}
             <div className="space-y-2">
-              <div className="h-4 bg-white/5 rounded shimmer w-full" />
-              <div className="h-4 bg-white/5 rounded shimmer w-3/4" />
+              <div className="h-4 bg-[#eeeeee]/5 rounded shimmer w-full" />
+              <div className="h-4 bg-[#eeeeee]/5 rounded shimmer w-3/4" />
             </div>
             
             {/* Footer */}
-            <div className="flex items-center justify-between pt-2 border-t border-white/5">
-              <div className="h-4 bg-white/5 rounded shimmer w-24" />
-              <div className="h-5 bg-white/5 rounded shimmer w-16" />
+            <div className="flex items-center justify-between pt-2 border-t border-[#eeeeee]/5">
+              <div className="h-4 bg-[#eeeeee]/5 rounded shimmer w-24" />
+              <div className="h-5 bg-[#eeeeee]/5 rounded shimmer w-16" />
             </div>
           </motion.div>
         ))}

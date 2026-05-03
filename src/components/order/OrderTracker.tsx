@@ -42,8 +42,8 @@ const STATUS_STAGES: StatusStage[] = [
     label: 'Preparing',
     description: 'Your food is being prepared in the kitchen',
     icon: <ChefHat size={22} />,
-    color: '#FF6B35',
-    bg: '#FFF0E8',
+    color: '#b50346',
+    bg: '#e0e0e0',
   },
   {
     status: 'READY',
@@ -72,7 +72,7 @@ export default function OrderTracker({ orderId }: OrderTrackerProps) {
         <motion.div
           animate={{ rotate: 360 }}
           transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-          className="w-14 h-14 rounded-full border-4 border-[rgba(255,107,53,0.15)] border-t-[#FF6B35] mb-4"
+          className="w-14 h-14 rounded-full border-4 border-[rgba(181,3,70,0.15)] border-t-[#b50346] mb-4"
         />
         <p className="text-[#6B7280] text-sm">Loading order details...</p>
       </div>
@@ -102,9 +102,9 @@ export default function OrderTracker({ orderId }: OrderTrackerProps) {
           initial={{ opacity: 0, y: -16 }}
           animate={{ opacity: 1, y: 0 }}
           className="rounded-2xl p-4 text-center"
-          style={{ background: 'linear-gradient(135deg, #FF6B35, #FFB347)' }}
+          style={{ background: 'linear-gradient(135deg, #b50346, #d45c7e)' }}
         >
-          <p className="text-white font-bold text-base">
+          <p className="text-[#2D2D2D] font-bold text-base">
             🔔 Your order is ready! Head to the counter now.
           </p>
         </motion.div>
@@ -139,8 +139,8 @@ export default function OrderTracker({ orderId }: OrderTrackerProps) {
           transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
           className="text-center py-6 rounded-xl"
           style={{
-            background: isReady ? '#D1FAE5' : '#FFF0E8',
-            border: isReady ? '2px solid #10B981' : '1px solid rgba(255,107,53,0.15)',
+            background: isReady ? '#D1FAE5' : '#e0e0e0',
+            border: isReady ? '2px solid #10B981' : '1px solid rgba(181, 3, 70, 0.15)',
           }}
         >
           <p className="text-[#6B7280] text-sm mb-1">Token Number</p>
@@ -151,7 +151,7 @@ export default function OrderTracker({ orderId }: OrderTrackerProps) {
             style={{
               fontSize: '56px',
               lineHeight: 1,
-              color: isReady ? '#10B981' : '#FF6B35',
+              color: isReady ? '#10B981' : '#b50346',
             }}
           >
             #{order.tokenNumber}
@@ -168,7 +168,7 @@ export default function OrderTracker({ orderId }: OrderTrackerProps) {
           )}
         </motion.div>
 
-        <div className="flex items-center justify-between pt-3 border-t border-[rgba(255,107,53,0.1)]">
+        <div className="flex items-center justify-between pt-3 border-t border-[rgba(181,3,70,0.1)]">
           <span className="text-[#6B7280] text-sm">Cafeteria</span>
           <span className="text-[#1A1A2E] font-semibold text-sm">{order.cafeteria.name}</span>
         </div>
@@ -185,12 +185,12 @@ export default function OrderTracker({ orderId }: OrderTrackerProps) {
 
         <div className="relative">
           {/* Background line */}
-          <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-[rgba(255,107,53,0.1)]" />
+          <div className="absolute left-6 top-6 bottom-6 w-0.5 bg-[rgba(181,3,70,0.1)]" />
 
           {/* Active progress line */}
           <motion.div
             className="absolute left-6 top-6 w-0.5"
-            style={{ background: 'linear-gradient(180deg, #FF6B35, #FFB347)' }}
+            style={{ background: 'linear-gradient(180deg, #b50346, #d45c7e)' }}
             initial={{ height: 0 }}
             animate={{
               height: `${(currentStageIndex / (STATUS_STAGES.length - 1)) * 100}%`,
@@ -237,7 +237,7 @@ export default function OrderTracker({ orderId }: OrderTrackerProps) {
                         ? '#10B981'
                         : isActive
                         ? stage.color
-                        : '#FFF0E8',
+                        : '#e0e0e0',
                     }}
                   >
                     {isCompleted ? (
@@ -246,7 +246,7 @@ export default function OrderTracker({ orderId }: OrderTrackerProps) {
                         animate={{ scale: 1 }}
                         transition={{ type: 'spring', stiffness: 200 }}
                       >
-                        <CheckCircle2 size={22} className="text-white" />
+                        <CheckCircle2 size={22} className="text-[#2D2D2D]" />
                       </motion.div>
                     ) : (
                       <motion.div
@@ -260,7 +260,7 @@ export default function OrderTracker({ orderId }: OrderTrackerProps) {
                             ? { duration: 2, repeat: Infinity }
                             : {}
                         }
-                        style={{ color: isActive ? '#FFFFFF' : '#9CA3AF' }}
+                        style={{ color: isActive ? '#eeeeee' : '#9CA3AF' }}
                       >
                         {stage.icon}
                       </motion.div>
@@ -324,12 +324,12 @@ export default function OrderTracker({ orderId }: OrderTrackerProps) {
           {order.items.map((item) => (
             <div
               key={item.id}
-              className="flex items-center justify-between py-2 border-b border-[rgba(255,107,53,0.08)] last:border-0"
+              className="flex items-center justify-between py-2 border-b border-[rgba(181,3,70,0.08)] last:border-0"
             >
               <div className="flex items-center gap-3">
                 <span
                   className="text-sm font-bold w-7 h-7 rounded-lg flex items-center justify-center"
-                  style={{ background: '#FFF0E8', color: '#FF6B35' }}
+                  style={{ background: '#e0e0e0', color: '#b50346' }}
                 >
                   {item.quantity}×
                 </span>
@@ -341,9 +341,9 @@ export default function OrderTracker({ orderId }: OrderTrackerProps) {
             </div>
           ))}
         </div>
-        <div className="flex items-center justify-between pt-4 mt-2 border-t border-[rgba(255,107,53,0.1)]">
+        <div className="flex items-center justify-between pt-4 mt-2 border-t border-[rgba(181,3,70,0.1)]">
           <span className="text-[#1A1A2E] font-semibold">Total</span>
-          <span className="text-[#FF6B35] text-lg font-extrabold">
+          <span className="text-[#b50346] text-lg font-extrabold">
             ₹{order.totalAmount.toFixed(0)}
           </span>
         </div>

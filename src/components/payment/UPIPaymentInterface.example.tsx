@@ -28,14 +28,14 @@ export default function UPIPaymentInterfaceExample() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#1a1a1a] to-[#2d2d2d] p-6">
-      <h1 className="text-2xl font-bold text-white mb-8 text-center">
+      <h1 className="text-2xl font-bold text-[#2D2D2D] mb-8 text-center">
         UPIPaymentInterface Component Examples
       </h1>
 
       <div className="max-w-md mx-auto space-y-6">
         {/* Example 1: Demo Mode (No Cashfree Session) */}
         <div className="glass-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">
+          <h2 className="text-lg font-semibold text-[#2D2D2D] mb-4">
             Demo Mode (Simulated Payment)
           </h2>
           <UPIPaymentInterface
@@ -47,14 +47,14 @@ export default function UPIPaymentInterfaceExample() {
             onSuccess={handleSuccess}
             onError={handleError}
           />
-          <p className="text-white/50 text-xs mt-4">
+          <p className="text-[#2D2D2D]/50 text-xs mt-4">
             This demo simulates payment without actual Cashfree integration
           </p>
         </div>
 
         {/* Example 2: With Cashfree Session */}
         <div className="glass-card p-6">
-          <h2 className="text-lg font-semibold text-white mb-4">
+          <h2 className="text-lg font-semibold text-[#2D2D2D] mb-4">
             Production Mode (With Cashfree)
           </h2>
           <UPIPaymentInterface
@@ -66,7 +66,7 @@ export default function UPIPaymentInterfaceExample() {
             onSuccess={handleSuccess}
             onError={handleError}
           />
-          <p className="text-white/50 text-xs mt-4">
+          <p className="text-[#2D2D2D]/50 text-xs mt-4">
             This would integrate with actual Cashfree payment gateway
           </p>
         </div>
@@ -74,9 +74,9 @@ export default function UPIPaymentInterfaceExample() {
 
       {/* Usage Code Example */}
       <div className="glass-card p-6 max-w-4xl mx-auto mt-8">
-        <h2 className="text-lg font-semibold text-white mb-4">Usage Example</h2>
+        <h2 className="text-lg font-semibold text-[#2D2D2D] mb-4">Usage Example</h2>
         <pre className="bg-black/30 p-4 rounded-lg overflow-x-auto">
-          <code className="text-sm text-white/70">
+          <code className="text-sm text-[#2D2D2D]/70">
 {`import UPIPaymentInterface from '@/components/payment/UPIPaymentInterface';
 import { useRouter } from 'next/navigation';
 import { useCartStore } from '@/store/cartStore';
@@ -119,8 +119,8 @@ const CheckoutPage = () => {
 
       {/* Features List */}
       <div className="glass-card p-6 max-w-4xl mx-auto mt-8">
-        <h2 className="text-lg font-semibold text-white mb-4">Features</h2>
-        <ul className="space-y-2 text-white/70 text-sm">
+        <h2 className="text-lg font-semibold text-[#2D2D2D] mb-4">Features</h2>
+        <ul className="space-y-2 text-[#2D2D2D]/70 text-sm">
           <li className="flex items-start gap-2">
             <span className="text-success">✓</span>
             <span>UPI app grid with GPay, PhonePe, Paytm, and BHIM</span>
@@ -174,15 +174,15 @@ const CheckoutPage = () => {
 
       {/* Payment Flow Diagram */}
       <div className="glass-card p-6 max-w-4xl mx-auto mt-8">
-        <h2 className="text-lg font-semibold text-white mb-4">Payment Flow</h2>
+        <h2 className="text-lg font-semibold text-[#2D2D2D] mb-4">Payment Flow</h2>
         <div className="space-y-3 text-sm">
           <div className="flex items-start gap-3">
             <div className="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center text-xs font-bold flex-shrink-0">
               1
             </div>
             <div>
-              <p className="text-white font-medium">Select Payment Method</p>
-              <p className="text-white/50 text-xs">Choose UPI app, enter UPI ID, or scan QR code</p>
+              <p className="text-[#2D2D2D] font-medium">Select Payment Method</p>
+              <p className="text-[#2D2D2D]/50 text-xs">Choose UPI app, enter UPI ID, or scan QR code</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
@@ -190,8 +190,8 @@ const CheckoutPage = () => {
               2
             </div>
             <div>
-              <p className="text-white font-medium">Processing</p>
-              <p className="text-white/50 text-xs">Show loading animation (minimum 2.5 seconds)</p>
+              <p className="text-[#2D2D2D] font-medium">Processing</p>
+              <p className="text-[#2D2D2D]/50 text-xs">Show loading animation (minimum 2.5 seconds)</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
@@ -199,8 +199,8 @@ const CheckoutPage = () => {
               3
             </div>
             <div>
-              <p className="text-white font-medium">Cashfree Integration</p>
-              <p className="text-white/50 text-xs">Initiate payment with Cashfree SDK (if session ID provided)</p>
+              <p className="text-[#2D2D2D] font-medium">Cashfree Integration</p>
+              <p className="text-[#2D2D2D]/50 text-xs">Initiate payment with Cashfree SDK (if session ID provided)</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
@@ -208,8 +208,8 @@ const CheckoutPage = () => {
               4
             </div>
             <div>
-              <p className="text-white font-medium">Success Overlay</p>
-              <p className="text-white/50 text-xs">Display success animation with order details</p>
+              <p className="text-[#2D2D2D] font-medium">Success Overlay</p>
+              <p className="text-[#2D2D2D]/50 text-xs">Display success animation with order details</p>
             </div>
           </div>
           <div className="flex items-start gap-3">
@@ -217,8 +217,8 @@ const CheckoutPage = () => {
               5
             </div>
             <div>
-              <p className="text-white font-medium">Redirect</p>
-              <p className="text-white/50 text-xs">Call onSuccess callback to navigate to order tracker</p>
+              <p className="text-[#2D2D2D] font-medium">Redirect</p>
+              <p className="text-[#2D2D2D]/50 text-xs">Call onSuccess callback to navigate to order tracker</p>
             </div>
           </div>
         </div>
@@ -226,27 +226,27 @@ const CheckoutPage = () => {
 
       {/* UPI Apps Info */}
       <div className="glass-card p-6 max-w-4xl mx-auto mt-8">
-        <h2 className="text-lg font-semibold text-white mb-4">Supported UPI Apps</h2>
+        <h2 className="text-lg font-semibold text-[#2D2D2D] mb-4">Supported UPI Apps</h2>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="text-center">
             <div className="text-4xl mb-2">🟢</div>
-            <p className="text-white text-sm font-medium">Google Pay</p>
-            <p className="text-white/40 text-xs">GPay</p>
+            <p className="text-[#2D2D2D] text-sm font-medium">Google Pay</p>
+            <p className="text-[#2D2D2D]/40 text-xs">GPay</p>
           </div>
           <div className="text-center">
             <div className="text-4xl mb-2">🟣</div>
-            <p className="text-white text-sm font-medium">PhonePe</p>
-            <p className="text-white/40 text-xs">PhonePe</p>
+            <p className="text-[#2D2D2D] text-sm font-medium">PhonePe</p>
+            <p className="text-[#2D2D2D]/40 text-xs">PhonePe</p>
           </div>
           <div className="text-center">
             <div className="text-4xl mb-2">🔵</div>
-            <p className="text-white text-sm font-medium">Paytm</p>
-            <p className="text-white/40 text-xs">Paytm UPI</p>
+            <p className="text-[#2D2D2D] text-sm font-medium">Paytm</p>
+            <p className="text-[#2D2D2D]/40 text-xs">Paytm UPI</p>
           </div>
           <div className="text-center">
             <div className="text-4xl mb-2">🟠</div>
-            <p className="text-white text-sm font-medium">BHIM</p>
-            <p className="text-white/40 text-xs">BHIM UPI</p>
+            <p className="text-[#2D2D2D] text-sm font-medium">BHIM</p>
+            <p className="text-[#2D2D2D]/40 text-xs">BHIM UPI</p>
           </div>
         </div>
       </div>

@@ -158,7 +158,7 @@ export default function UPIPaymentInterface({
           >
             {/* UPI Apps Grid */}
             <div>
-              <h3 className="text-sm font-semibold text-white/70 mb-3 flex items-center gap-2">
+              <h3 className="text-sm font-semibold text-[#2D2D2D]/70 mb-3 flex items-center gap-2">
                 <Smartphone size={16} />
                 Pay with UPI App
               </h3>
@@ -168,10 +168,10 @@ export default function UPIPaymentInterface({
                     key={app.id}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => handleUPIAppClick(app)}
-                    className="glass-card p-4 flex flex-col items-center gap-2 hover:bg-white/10 transition-colors"
+                    className="glass-card p-4 flex flex-col items-center gap-2 hover:bg-[#eeeeee]/10 transition-colors"
                   >
                     <span className="text-3xl">{app.icon}</span>
-                    <span className="text-xs text-white/70 font-medium">{app.name}</span>
+                    <span className="text-xs text-[#2D2D2D]/70 font-medium">{app.name}</span>
                   </motion.button>
                 ))}
               </div>
@@ -179,14 +179,14 @@ export default function UPIPaymentInterface({
 
             {/* Divider */}
             <div className="flex items-center gap-3">
-              <div className="flex-1 h-px bg-white/10" />
-              <span className="text-xs text-white/40">OR</span>
-              <div className="flex-1 h-px bg-white/10" />
+              <div className="flex-1 h-px bg-[#eeeeee]/10" />
+              <span className="text-xs text-[#2D2D2D]/40">OR</span>
+              <div className="flex-1 h-px bg-[#eeeeee]/10" />
             </div>
 
             {/* UPI ID Input */}
             <div>
-              <h3 className="text-sm font-semibold text-white/70 mb-3">
+              <h3 className="text-sm font-semibold text-[#2D2D2D]/70 mb-3">
                 Enter UPI ID
               </h3>
               <form onSubmit={handleUPIIdSubmit} className="space-y-3">
@@ -210,9 +210,9 @@ export default function UPIPaymentInterface({
 
             {/* Divider */}
             <div className="flex items-center gap-3">
-              <div className="flex-1 h-px bg-white/10" />
-              <span className="text-xs text-white/40">OR</span>
-              <div className="flex-1 h-px bg-white/10" />
+              <div className="flex-1 h-px bg-[#eeeeee]/10" />
+              <span className="text-xs text-[#2D2D2D]/40">OR</span>
+              <div className="flex-1 h-px bg-[#eeeeee]/10" />
             </div>
 
             {/* QR Code Option */}
@@ -240,16 +240,16 @@ export default function UPIPaymentInterface({
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-              className="w-16 h-16 border-4 border-white/10 border-t-primary rounded-full mb-4"
+              className="w-16 h-16 border-4 border-[#eeeeee]/10 border-t-primary rounded-full mb-4"
             />
             <motion.p
               animate={{ opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 1.5, repeat: Infinity }}
-              className="text-white/70 text-sm"
+              className="text-[#2D2D2D]/70 text-sm"
             >
               Processing payment...
             </motion.p>
-            <p className="text-white/40 text-xs mt-2">
+            <p className="text-[#2D2D2D]/40 text-xs mt-2">
               Please wait while we confirm your payment
             </p>
           </motion.div>
@@ -274,7 +274,7 @@ export default function UPIPaymentInterface({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-xl font-bold text-white mb-2"
+              className="text-xl font-bold text-[#2D2D2D] mb-2"
             >
               Payment Successful!
             </motion.h3>
@@ -282,7 +282,7 @@ export default function UPIPaymentInterface({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="text-white/60 text-sm mb-6 text-center"
+              className="text-[#2D2D2D]/60 text-sm mb-6 text-center"
             >
               Your order has been confirmed
             </motion.p>
@@ -295,16 +295,16 @@ export default function UPIPaymentInterface({
               className="glass-card p-4 w-full space-y-2"
             >
               <div className="flex items-center justify-between">
-                <span className="text-white/50 text-sm">Token Number</span>
+                <span className="text-[#2D2D2D]/50 text-sm">Token Number</span>
                 <span className="text-primary font-bold text-lg">#{tokenNumber}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-white/50 text-sm">Cafeteria</span>
-                <span className="text-white text-sm">{cafeteriaName}</span>
+                <span className="text-[#2D2D2D]/50 text-sm">Cafeteria</span>
+                <span className="text-[#2D2D2D] text-sm">{cafeteriaName}</span>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-white/50 text-sm">Amount Paid</span>
-                <span className="text-white font-semibold">₹{totalAmount}</span>
+                <span className="text-[#2D2D2D]/50 text-sm">Amount Paid</span>
+                <span className="text-[#2D2D2D] font-semibold">₹{totalAmount}</span>
               </div>
             </motion.div>
 
@@ -312,7 +312,7 @@ export default function UPIPaymentInterface({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.8 }}
-              className="text-white/40 text-xs mt-4 text-center"
+              className="text-[#2D2D2D]/40 text-xs mt-4 text-center"
             >
               Redirecting to order tracker...
             </motion.p>
@@ -337,12 +337,12 @@ export default function UPIPaymentInterface({
               onClick={(e) => e.stopPropagation()}
               className="glass-card p-6 max-w-sm w-full"
             >
-              <h3 className="text-lg font-bold text-white mb-4 text-center">
+              <h3 className="text-lg font-bold text-[#2D2D2D] mb-4 text-center">
                 Scan QR Code
               </h3>
               
               {/* QR Code Placeholder */}
-              <div className="bg-white p-4 rounded-lg mb-4">
+              <div className="bg-[#eeeeee] p-4 rounded-lg mb-4">
                 <div className="aspect-square bg-gradient-to-br from-gray-100 to-gray-200 rounded flex items-center justify-center">
                   <div className="text-center">
                     <QrCode size={64} className="text-gray-400 mx-auto mb-2" />
@@ -352,7 +352,7 @@ export default function UPIPaymentInterface({
                 </div>
               </div>
 
-              <p className="text-white/60 text-sm text-center mb-4">
+              <p className="text-[#2D2D2D]/60 text-sm text-center mb-4">
                 Scan this QR code with any UPI app to complete payment
               </p>
 

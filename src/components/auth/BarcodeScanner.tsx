@@ -150,8 +150,8 @@ export default function BarcodeScanner({
 
         {/* Top text */}
         <div className="absolute top-16 left-0 right-0 text-center safe-top pointer-events-auto">
-          <h1 className="text-white font-bold text-xl">Scan Your ID</h1>
-          <p className="text-white/50 text-sm mt-1">
+          <h1 className="text-[#2D2D2D] font-bold text-xl">Scan Your ID</h1>
+          <p className="text-[#2D2D2D]/50 text-sm mt-1">
             Point camera at your college ID barcode
           </p>
         </div>
@@ -160,7 +160,7 @@ export default function BarcodeScanner({
         {scanError && (
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 glass-card p-6 text-center pointer-events-auto max-w-xs">
             <CameraOff size={40} className="text-primary mx-auto mb-3" />
-            <p className="text-white/70 text-sm">{scanError}</p>
+            <p className="text-[#2D2D2D]/70 text-sm">{scanError}</p>
           </div>
         )}
       </div>

@@ -107,7 +107,7 @@ export default class ErrorBoundary extends Component<
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.2 }}
-              className="text-xl font-bold text-white mb-3"
+              className="text-xl font-bold text-[#2D2D2D] mb-3"
             >
               Oops! Something went wrong
             </motion.h2>
@@ -117,7 +117,7 @@ export default class ErrorBoundary extends Component<
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="text-sm text-white/60 mb-6"
+              className="text-sm text-[#2D2D2D]/60 mb-6"
             >
               {this.props.section
                 ? `We're having trouble loading the ${this.props.section.toLowerCase()} section. Don't worry, your data is safe.`
@@ -145,7 +145,7 @@ export default class ErrorBoundary extends Component<
               <motion.button
                 whileTap={{ scale: 0.95 }}
                 onClick={this.handleGoHome}
-                className="glass-card py-3 px-6 rounded-xl text-sm font-medium text-white/70 hover:text-white transition-colors flex items-center justify-center gap-2"
+                className="glass-card py-3 px-6 rounded-xl text-sm font-medium text-[#2D2D2D]/70 hover:text-[#2D2D2D] transition-colors flex items-center justify-center gap-2"
               >
                 <Home size={18} />
                 Go to Home
@@ -160,7 +160,7 @@ export default class ErrorBoundary extends Component<
                 transition={{ delay: 0.5 }}
                 className="mt-6 text-left"
               >
-                <summary className="text-xs text-white/40 cursor-pointer hover:text-white/60 transition-colors">
+                <summary className="text-xs text-[#2D2D2D]/40 cursor-pointer hover:text-[#2D2D2D]/60 transition-colors">
                   Technical Details
                 </summary>
                 <pre className="mt-2 p-3 bg-black/30 rounded-lg text-[10px] text-red-300 overflow-auto max-h-40">

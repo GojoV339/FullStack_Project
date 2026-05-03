@@ -92,7 +92,9 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    const orderNumber = `AF-${year}-${dailyCounter.toString().padStart(4, '0')}`;
+    // Generate a unique order number using timestamp to avoid collisions
+const timestamp = Date.now();
+const orderNumber = `AF-${year}-${timestamp}`;
 
     // Create order with 5-minute expiry
     const expiresAt = new Date(Date.now() + 5 * 60 * 1000);

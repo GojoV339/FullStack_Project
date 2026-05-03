@@ -8,6 +8,7 @@ import { handleApiError, errorResponse } from '@/lib/api-error';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    console.log('[Staff Login] Request body:', body);
     const parsed = staffLoginSchema.parse(body);
 
     const { email, password } = parsed;
@@ -48,7 +49,7 @@ export async function POST(request: NextRequest) {
       },
     });
 
-    response.cookies.set('token', token, {
+    response.cookies.set('staff_token', token, {
       httpOnly: true,
       secure: process.env.NODE_ENV === 'production',
       sameSite: 'lax',

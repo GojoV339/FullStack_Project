@@ -1,0 +1,75 @@
+
+> amrita-feast@1.0.0 dev
+> next dev
+
+[1G[0K  [1m[38;2;173;127;168m▲ Next.js 14.2.15[39m[22m
+  - Local:        http://localhost:5000
+  - Environments: .env.local, .env
+
+ [32m[1m✓[22m[39m Starting...
+[35m[1mAttention[22m[39m: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+[36mhttps://nextjs.org/telemetry[39m
+
+> [PWA] PWA support is disabled
+> [PWA] PWA support is disabled
+ [32m[1m✓[22m[39m Ready in 2.3s
+ [37m[1m○[22m[39m Compiling / ...
+ [32m[1m✓[22m[39m Compiled / in 6.1s (1200 modules)
+ GET / [32m200[39m in 6339ms
+ [37m[1m○[22m[39m Compiling /login ...
+ [32m[1m✓[22m[39m Compiled /login in 1709ms (1268 modules)
+ GET /login [32m200[39m in 1928ms
+ [37m[1m○[22m[39m Compiling /cafeteria ...
+ [32m[1m✓[22m[39m Compiled /cafeteria in 1069ms (1366 modules)
+ GET /cafeteria [32m200[39m in 1320ms
+ [37m[1m○[22m[39m Compiling /api/cafeterias ...
+ [32m[1m✓[22m[39m Compiled /api/cafeterias in 535ms (729 modules)
+ GET /api/cafeterias [32m200[39m in 1887ms
+[Cafeterias Fetch] {
+  error: [32m'\n'[39m +
+    [32m'Invalid `prisma.cafeteria.findMany()` invocation:\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'The table `public.Cafeteria` does not exist in the current database.'[39m,
+  stack: [32m'PrismaClientKnownRequestError: \n'[39m +
+    [32m'Invalid `prisma.cafeteria.findMany()` invocation:\n'[39m +
+    [32m'\n'[39m +
+    [32m'\n'[39m +
+    [32m'The table `public.Cafeteria` does not exist in the current database.\n'[39m +
+    [32m'    at $n.handleRequestError (/home/runner/workspace/node_modules/@prisma/client/runtime/library.js:121:7315)\n'[39m +
+    [32m'    at $n.handleAndLogRequestError (/home/runner/workspace/node_modules/@prisma/client/runtime/library.js:121:6623)\n'[39m +
+    [32m'    at $n.request (/home/runner/workspace/node_modules/@prisma/client/runtime/library.js:121:6307)\n'[39m +
+    [32m'    at async l (/home/runner/workspace/node_modules/@prisma/client/runtime/library.js:130:9633)\n'[39m +
+    [32m'    at async GET (webpack-internal:///(rsc)/./app/api/cafeterias/route.ts:15:28)\n'[39m +
+    [32m'    at async /home/runner/workspace/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:55778\n'[39m +
+    [32m'    at async eO.execute (/home/runner/workspace/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:46527)\n'[39m +
+    [32m'    at async eO.handle (/home/runner/workspace/node_modules/next/dist/compiled/next-server/app-route.runtime.dev.js:6:57112)\n'[39m +
+    [32m'    at async doRender (/home/runner/workspace/node_modules/next/dist/server/base-server.js:1352:42)\n'[39m +
+    [32m'    at async cacheEntry.responseCache.get.routeKind (/home/runner/workspace/node_modules/next/dist/server/base-server.js:1574:28)\n'[39m +
+    [32m'    at async DevServer.renderToResponseWithComponentsImpl (/home/runner/workspace/node_modules/next/dist/server/base-server.js:1482:28)\n'[39m +
+    [32m'    at async DevServer.renderPageComponent (/home/runner/workspace/node_modules/next/dist/server/base-server.js:1908:24)\n'[39m +
+    [32m'    at async DevServer.renderToResponseImpl (/home/runner/workspace/node_modules/next/dist/server/base-server.js:1946:32)\n'[39m +
+    [32m'    at async DevServer.pipeImpl (/home/runner/workspace/node_modules/next/dist/server/base-server.js:921:25)\n'[39m +
+    [32m'    at async NextNodeServer.handleCatchallRenderRequest (/home/runner/workspace/node_modules/next/dist/server/next-server.js:272:17)\n'[39m +
+    [32m'    at async DevServer.handleRequestImpl (/home/runner/workspace/node_modules/next/dist/server/base-server.js:817:17)\n'[39m +
+    [32m'    at async /home/runner/workspace/node_modules/next/dist/server/dev/next-dev-server.js:339:20\n'[39m +
+    [32m'    at async Span.traceAsyncFn (/home/runner/workspace/node_modules/next/dist/trace/trace.js:154:20)\n'[39m +
+    [32m'    at async DevServer.handleRequest (/home/runner/workspace/node_modules/next/dist/server/dev/next-dev-server.js:336:24)\n'[39m +
+    [32m'    at async invokeRender (/home/runner/workspace/node_modules/next/dist/server/lib/router-server.js:173:21)\n'[39m +
+    [32m'    at async handleRequest (/home/runner/workspace/node_modules/next/dist/server/lib/router-server.js:350:24)\n'[39m +
+    [32m'    at async requestHandlerImpl (/home/runner/workspace/node_modules/next/dist/server/lib/router-server.js:374:13)\n'[39m +
+    [32m'    at async Server.requestListener (/home/runner/workspace/node_modules/next/dist/server/lib/start-server.js:141:13)'[39m,
+  endpoint: [32m'/api/cafeterias'[39m
+}
+ [32m[1m✓[22m[39m Compiled in 988ms (694 modules)
+ [32m[1m✓[22m[39m Compiled in 1026ms (694 modules)
+ [32m[1m✓[22m[39m Compiled in 471ms (694 modules)
+ [32m[1m✓[22m[39m Compiled in 1250ms (694 modules)
+ [32m[1m✓[22m[39m Compiled in 650ms (694 modules)
+ [32m[1m✓[22m[39m Compiled in 275ms (694 modules)
+ [32m[1m✓[22m[39m Compiled in 449ms (694 modules)
+ [32m[1m✓[22m[39m Compiled in 429ms (694 modules)
+ [32m[1m✓[22m[39m Compiled in 380ms (694 modules)
+ [32m[1m✓[22m[39m Compiled in 299ms (694 modules)

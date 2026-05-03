@@ -142,6 +142,7 @@ async function main() {
   const cafeteriaList = await prisma.cafeteria.findMany();
   
   const staffAccounts = [
+    { name: 'Admin User', email: 'admin@amrita.edu', password: 'admin123', cafeteriaIndex: 0 },
     { name: 'Rajesh Kumar', email: 'rajesh@amrita.edu', password: 'staff123', cafeteriaIndex: 0 },
     { name: 'Priya Sharma', email: 'priya@amrita.edu', password: 'staff456', cafeteriaIndex: 1 },
     { name: 'Arun Menon', email: 'arun@amrita.edu', password: 'staff789', cafeteriaIndex: 2 },

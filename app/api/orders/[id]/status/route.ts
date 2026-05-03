@@ -10,7 +10,9 @@ export async function PATCH(
   { params }: { params: { id: string } }
 ) {
   try {
+    console.log('[Order Status API] Request received for order:', params.id);
     const session = await getStaffSession();
+    console.log('[Order Status API] Staff session:', session);
     if (!session) {
       return errorResponse('Unauthorized', 401, 'UNAUTHORIZED');
     }

@@ -1,0 +1,27 @@
+digraph Workflow {
+  rankdir=TB;
+  node [shape=box, style=filled, color=lightblue2];
+
+  // Actors
+  User [label="User (Student)", shape=ellipse, color=lightgoldenrod2];
+  Frontend [label="Frontend (Next.js UI)"];
+  API [label="Orders API (/api/orders)"];
+  Service [label="Order Service (lib)" ];
+  DB [label="PostgreSQL (Prisma)" ];
+  PaymentMock [label="Cashfree Mock (UPI)", shape=ellipse, color=lightgoldenrod1];
+  Notification [label="Notification Service", shape=ellipse, color=lightgrey];
+
+  // Flow
+  User -> Frontend [label="Login / Scan ID"];
+  Frontend -> API [label="POST /api/orders"];
+  API -> Service [label="Create Order"];
+  Service -> DB [label="Persist Order & Items"];
+  Service -> PaymentMock [label="Create Payment Session"];
+  PaymentMock -> Service [label="Session ID"];
+  Service -> DB [label="Create Payment Record"];
+  Service -> Notification [label="Send Token & Order Details"];
+  Notification -> User [label="Token Number / Order Confirmation"];
+
+  // Optional branches
+  Frontend -> Notification [label="Real‑time UI updates" style=dashed];
+}

@@ -12,9 +12,9 @@ import type { CafeteriaInfo } from '@/types';
 
 const cafeteriaEmojis = ['🏛️', '🍽️', '🏢'];
 const gradients = [
-  'from-[#FF6B35]/10 via-[#FFB347]/5 to-transparent',
-  'from-[#FFB347]/10 via-[#FF6B35]/5 to-transparent',
-  'from-[#FF6B35]/8 via-[#FFB347]/8 to-transparent',
+  'from-[#b50346]/8 via-[#d45c7e]/5 to-transparent',
+  'from-[#d45c7e]/8 via-[#b50346]/5 to-transparent',
+  'from-[#b50346]/6 via-[#d45c7e]/6 to-transparent',
 ];
 
 export default function CafeteriaPage() {
@@ -43,7 +43,6 @@ function CafeteriaPageContent() {
         setLoading(false);
       }
     };
-
     fetchCafeterias();
   }, []);
 
@@ -55,8 +54,7 @@ function CafeteriaPageContent() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-[#FFF8F4] p-6 safe-top pb-28">
-        {/* Header */}
+      <div className="min-h-screen bg-[#eeeeee] p-6 safe-top pb-28">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -64,16 +62,13 @@ function CafeteriaPageContent() {
         >
           <div className="flex items-center gap-2 mb-1">
             <span className="text-2xl">☀️</span>
-            <h1 className="text-2xl font-bold text-[#1A1A2E]">
-              Good morning!
-            </h1>
+            <h1 className="text-2xl font-bold text-[#2D2D2D]">Good morning!</h1>
           </div>
-          <p className="text-[#6B7280] text-sm mt-1 ml-10">
+          <p className="text-[#8A8A8A] text-sm mt-1 ml-10">
             Which canteen are you ordering from today?
           </p>
         </motion.div>
 
-        {/* Cafeteria Cards */}
         {loading ? (
           <div className="space-y-4">
             {[1, 2, 3].map((i) => (
@@ -132,13 +127,8 @@ function CafeteriaCard({
     setRotate({ x: Math.max(-8, Math.min(8, x)), y: Math.max(-8, Math.min(8, y)) });
   };
 
-  const handleMouseLeave = () => {
-    setRotate({ x: 0, y: 0 });
-    onLeave();
-  };
-
   const getWaitBadge = (minutes: number) => {
-    if (minutes < 10) return { bg: '#ECFDF5', text: '#065F46', label: `~${minutes} min` };
+    if (minutes < 10) return { bg: '#ECFDF5', text: '#166534', label: `~${minutes} min` };
     if (minutes <= 20) return { bg: '#FEF3C7', text: '#92400E', label: `~${minutes} min` };
     return { bg: '#FEF2F2', text: '#991B1B', label: `~${minutes} min` };
   };
@@ -154,7 +144,7 @@ function CafeteriaCard({
       whileTap={{ scale: 0.97 }}
       onMouseMove={handleMouseMove}
       onMouseEnter={onHover}
-      onMouseLeave={handleMouseLeave}
+      onMouseLeave={() => { setRotate({ x: 0, y: 0 }); onLeave(); }}
       onClick={onClick}
       className={`relative cursor-pointer ${!cafe.isOpen ? 'opacity-50 cursor-not-allowed' : ''}`}
       style={{
@@ -163,9 +153,7 @@ function CafeteriaCard({
       }}
     >
       <div className="glass-card overflow-hidden relative">
-        {/* Warm gradient overlay */}
         <div className={`absolute inset-0 bg-gradient-to-br ${gradient}`} />
-
         <div className="relative p-5">
           <div className="flex items-start justify-between">
             <div className="flex items-center gap-4">
@@ -177,39 +165,31 @@ function CafeteriaCard({
                 {emoji}
               </motion.div>
               <div>
-                <h3 className="text-lg font-bold text-[#1A1A2E]">{cafe.name}</h3>
+                <h3 className="text-lg font-bold text-[#2D2D2D]">{cafe.name}</h3>
                 <div className="flex items-center gap-1.5 mt-1">
-                  <MapPin size={12} className="text-[#6B7280]" />
-                  <span className="text-[#6B7280] text-xs">{cafe.location}</span>
+                  <MapPin size={12} className="text-[#8A8A8A]" />
+                  <span className="text-[#8A8A8A] text-xs">{cafe.location}</span>
                 </div>
               </div>
             </div>
             <ChevronRight
               size={20}
-              className={`transition-all ${
-                isHovered ? 'translate-x-1 text-[#FF6B35]' : 'text-[#9CA3AF]'
-              }`}
+              className={`transition-all ${isHovered ? 'translate-x-1 text-[#b50346]' : 'text-[#ABABAB]'}`}
             />
           </div>
 
           <div className="flex items-center gap-3 mt-4">
-            {/* Open/Closed badge */}
             <div
               className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold"
               style={{
                 background: cafe.isOpen ? '#ECFDF5' : '#FEF2F2',
-                color: cafe.isOpen ? '#065F46' : '#991B1B',
+                color: cafe.isOpen ? '#166534' : '#991B1B',
               }}
             >
-              {cafe.isOpen ? (
-                <Wifi size={11} />
-              ) : (
-                <WifiOff size={11} />
-              )}
+              {cafe.isOpen ? <Wifi size={11} /> : <WifiOff size={11} />}
               {cafe.isOpen ? 'Open Now' : 'Closed'}
             </div>
 
-            {/* Wait time badge */}
             {cafe.isOpen && (
               <div
                 className="flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-semibold"
@@ -221,15 +201,6 @@ function CafeteriaCard({
             )}
           </div>
         </div>
-
-        {/* Shimmer on hover */}
-        {isHovered && cafe.isOpen && (
-          <motion.div
-            className="absolute inset-0 shimmer rounded-2xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          />
-        )}
       </div>
     </motion.div>
   );

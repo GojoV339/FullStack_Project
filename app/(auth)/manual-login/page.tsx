@@ -47,7 +47,7 @@ export default function ManualLoginPage() {
       <div className="min-h-screen gradient-dark flex flex-col items-center justify-center p-6">
         <button
           onClick={() => router.back()}
-          className="absolute top-6 left-6 text-white/40 hover:text-white/70 transition-colors safe-top"
+          className="absolute top-6 left-6 text-[#2D2D2D]/40 hover:text-[#2D2D2D]/70 transition-colors safe-top"
         >
           <ArrowLeft size={24} />
         </button>
@@ -56,19 +56,23 @@ export default function ManualLoginPage() {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ type: 'spring', stiffness: 200 }}
-          className="w-16 h-16 gradient-primary rounded-2xl flex items-center justify-center shadow-primary mb-6"
+          className="w-16 h-16 rounded-2xl overflow-hidden shadow-primary mb-6"
         >
-          <ChefHat size={32} className="text-white" />
+          <img
+            src="/images/logo.jpeg"
+            alt="Amrita Feast Logo"
+            className="w-full h-full object-cover"
+          />
         </motion.div>
 
-        <h1 className="text-2xl font-bold text-white mb-2">Manual Login</h1>
-        <p className="text-white/40 text-sm text-center max-w-xs mb-8">
+        <h1 className="text-2xl font-bold text-[#2D2D2D] mb-2">Manual Login</h1>
+        <p className="text-[#2D2D2D]/40 text-sm text-center max-w-xs mb-8">
           Enter your Amrita registration number to continue
         </p>
 
         <form onSubmit={handleSubmit} className="w-full max-w-xs space-y-4">
           <div>
-            <label className="text-white/50 text-xs font-medium mb-1.5 block">
+            <label className="text-[#2D2D2D]/50 text-xs font-medium mb-1.5 block">
               Registration Number
             </label>
             <input
@@ -80,7 +84,7 @@ export default function ManualLoginPage() {
               autoCapitalize="characters"
               required
             />
-            <p className="text-white/30 text-[11px] mt-1.5">
+            <p className="text-[#2D2D2D]/30 text-[11px] mt-1.5">
               Format: XX.EN.U4XXX00000
             </p>
           </div>
@@ -96,7 +100,7 @@ export default function ManualLoginPage() {
                 <motion.span
                   animate={{ rotate: 360 }}
                   transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-                  className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full inline-block"
+                  className="w-5 h-5 border-2 border-[#eeeeee]/30 border-t-white rounded-full inline-block"
                 />
                 Logging in...
               </span>

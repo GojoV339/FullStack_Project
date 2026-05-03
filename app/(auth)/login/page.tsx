@@ -73,7 +73,7 @@ export default function LoginPage() {
 
   return (
     <div className="min-h-screen relative overflow-hidden" style={{
-      background: 'radial-gradient(ellipse at top, #FF6B35 0%, #C0410F 40%, #1A1A2E 100%)'
+      background: 'radial-gradient(ellipse at top, #e0e0e0 0%, #d6d6d6 40%, #DAD3C8 100%)'
     }}>
       {/* Logo */}
       <div className="absolute top-0 left-0 right-0 z-10 flex flex-col items-center pt-16 pb-4">
@@ -83,12 +83,12 @@ export default function LoginPage() {
           transition={{ delay: 0.2 }}
           className="flex items-center gap-3"
         >
-          <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center">
+          <div className="w-12 h-12 rounded-2xl bg-[#eeeeee]/20 flex items-center justify-center">
             <span className="text-2xl">🍽️</span>
           </div>
           <div>
-            <h1 className="text-white font-bold text-2xl leading-none">Amrita Feast</h1>
-            <p className="text-white/60 text-xs mt-0.5">Skip the queue · Order from class</p>
+            <h1 className="text-[#2D2D2D] font-bold text-2xl leading-none">Amrita Feast</h1>
+            <p className="text-[#2D2D2D]/60 text-xs mt-0.5">Skip the queue · Order from class</p>
           </div>
         </motion.div>
       </div>
@@ -99,7 +99,7 @@ export default function LoginPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
-          className="flex items-center justify-center gap-2 text-white/70 text-sm"
+          className="flex items-center justify-center gap-2 text-[#2D2D2D]/70 text-sm"
         >
           <ScanLine size={16} />
           Scan your Amrita ID card to login
@@ -117,7 +117,7 @@ export default function LoginPage() {
         <motion.button
           onClick={() => setShowManual(!showManual)}
           className="w-full py-4 text-center flex items-center justify-center gap-2"
-          style={{ color: 'rgba(255,255,255,0.65)' }}
+          style={{ color: 'rgba(238,238,238,0.65)' }}
         >
           <KeyboardIcon size={16} />
           <span className="text-sm">Can&apos;t scan? Enter manually</span>
@@ -154,7 +154,7 @@ function ManualInput({
       animate={{ y: 0 }}
       exit={{ y: '100%' }}
       transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-      className="bg-white p-6 rounded-t-3xl safe-bottom shadow-2xl"
+      className="bg-[#eeeeee] p-6 rounded-t-3xl safe-bottom shadow-2xl"
     >
       <div className="w-10 h-1 bg-[#FFE4D0] rounded-full mx-auto mb-5" />
 
@@ -184,7 +184,7 @@ function ManualInput({
             <motion.span
               animate={{ rotate: 360 }}
               transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-              className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full inline-block"
+              className="w-5 h-5 border-2 border-[#eeeeee]/30 border-t-white rounded-full inline-block"
             />
             Logging in...
           </span>

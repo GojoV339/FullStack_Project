@@ -77,16 +77,16 @@ function MenuPageContent() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-[#FFF8F4] pb-32">
+      <div className="min-h-screen bg-[#eeeeee] pb-32">
         {/* Sticky Header */}
-        <div className="sticky top-0 z-20 bg-white border-b border-[rgba(255,107,53,0.1)] shadow-sm safe-top">
+        <div className="sticky top-0 z-20 bg-[#eeeeee] border-b border-[rgba(181,3,70,0.1)] shadow-sm safe-top">
           <div className="px-4 pt-4 pb-3">
             <div className="flex items-center justify-between mb-3">
               <div className="flex items-center gap-3">
                 <motion.button
                   whileTap={{ scale: 0.9 }}
                   onClick={() => router.push('/cafeteria')}
-                  className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#FFF0E8] text-[#FF6B35]"
+                  className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#e0e0e0] text-[#b50346]"
                 >
                   <ArrowLeft size={20} />
                 </motion.button>
@@ -110,12 +110,12 @@ function MenuPageContent() {
                 placeholder="Search menu..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pl-9 py-2.5 pr-4 text-sm rounded-xl bg-[#FFF8F4] border border-[rgba(255,107,53,0.15)] text-[#1A1A2E] placeholder-[#9CA3AF] focus:outline-none focus:border-[#FF6B35] focus:ring-2 focus:ring-[rgba(255,107,53,0.15)] transition-all"
+                className="w-full pl-9 py-2.5 pr-4 text-sm rounded-xl bg-[#eeeeee] border border-[rgba(181,3,70,0.15)] text-[#1A1A2E] placeholder-[#9CA3AF] focus:outline-none focus:border-[#b50346] focus:ring-2 focus:ring-[rgba(181,3,70,0.15)] transition-all"
               />
             </div>
 
             {/* Animated Tabs */}
-            <div className="flex gap-1 relative bg-[#FFF0E8] p-1 rounded-xl">
+            <div className="flex gap-1 relative bg-[#e0e0e0] p-1 rounded-xl">
               {[
                 { key: 'snacks' as Tab, label: 'Ready Now', icon: Zap },
                 { key: 'cookToOrder' as Tab, label: 'Cook to Order', icon: Flame },
@@ -128,15 +128,15 @@ function MenuPageContent() {
                   {activeTab === tab.key && (
                     <motion.div
                       layoutId="tab-indicator"
-                      className="absolute inset-0 bg-white rounded-lg shadow-sm"
-                      style={{ boxShadow: '0 2px 8px rgba(255,107,53,0.15)' }}
+                      className="absolute inset-0 bg-[#eeeeee] rounded-lg shadow-sm"
+                      style={{ boxShadow: '0 2px 8px rgba(181,3,70,0.15)' }}
                       transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                     />
                   )}
                   <tab.icon
                     size={14}
                     className={`relative z-10 transition-colors ${
-                      activeTab === tab.key ? 'text-[#FF6B35]' : 'text-[#9CA3AF]'
+                      activeTab === tab.key ? 'text-[#b50346]' : 'text-[#9CA3AF]'
                     }`}
                   />
                   <span
@@ -204,7 +204,7 @@ function MenuPageContent() {
                 <motion.button
                   whileTap={{ scale: 0.95 }}
                   onClick={() => setSearchQuery('')}
-                  className="mt-3 text-[#FF6B35] text-sm font-medium"
+                  className="mt-3 text-[#b50346] text-sm font-medium"
                 >
                   Clear search
                 </motion.button>

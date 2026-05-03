@@ -1,0 +1,89 @@
+digraph SystemArchitecture {
+  rankdir=LR;
+  node [shape=box, style=filled, color=lightblue2];
+
+  // Frontend
+  subgraph cluster_frontend {
+    label="Frontend (Next.js)";
+    style=filled;
+    color=lightgrey;
+    LandingPage [label="Landing Page (page.tsx)"];
+    MenuPage [label="Menu Page"];
+    CartPage [label="Cart & Checkout"];
+    StaffDashboard [label="Staff Dashboard"];
+    AuthStore [label="Zustand Auth Store"];
+    OrderStore [label="Zustand Order Store"];
+    Components [label="UI Components (glass‑card, buttons, etc.)"];
+    Motion [label="Framer Motion"];
+  }
+
+  // API Layer
+  subgraph cluster_api {
+    label="Backend API (Next.js API Routes)";
+    style=filled;
+    color=lightgrey;
+    OrdersAPI [label="/api/orders (route.ts)"];
+    AuthAPI [label="/api/auth (login, JWT)" ];
+    PaymentAPI [label="Cashfree Mock / Payment" ];
+    Validation [label="Input Validation (zod)"];
+  }
+
+  // Services / Business Logic
+  subgraph cluster_services {
+    label="Business Logic (lib)";
+    style=filled;
+    color=lightgrey;
+    OrderService [label="Order Service"];
+    PaymentService [label="Payment Service"];
+    CafeteriaService [label="Cafeteria Service"];
+  }
+
+  // Data Layer
+  subgraph cluster_db {
+    label="Database (PostgreSQL via Prisma)";
+    style=filled;
+    color=lightgrey;
+    Student [label="student"];
+    Cafeteria [label="cafeteria"];
+    MenuItem [label="menuItem"];
+    Order [label="order"];
+    OrderItem [label="orderItem"];
+    Payment [label="payment"];
+  }
+
+  // Relationships
+  LandingPage -> AuthStore;
+  LandingPage -> MenuPage;
+  MenuPage -> Components;
+  MenuPage -> OrderStore;
+  CartPage -> OrderStore;
+  CartPage -> PaymentAPI;
+  StaffDashboard -> OrdersAPI;
+
+  OrdersAPI -> OrderService;
+  OrderService -> Validation;
+  OrderService -> PaymentService;
+  OrderService -> Student;
+  OrderService -> Cafeteria;
+  OrderService -> MenuItem;
+  OrderService -> Order;
+  OrderService -> OrderItem;
+
+  PaymentAPI -> PaymentService;
+  PaymentService -> Payment;
+  PaymentService -> CashfreeMock [label="mock UPI"];
+
+  AuthAPI -> Student;
+  AuthAPI -> AuthStore;
+
+  // Prisma ORM
+  Student -> "Prisma ORM";
+  Cafeteria -> "Prisma ORM";
+  MenuItem -> "Prisma ORM";
+  Order -> "Prisma ORM";
+  OrderItem -> "Prisma ORM";
+  Payment -> "Prisma ORM";
+
+  // External services
+  CashfreeMock [shape=ellipse, style=filled, color=lightgoldenrod1, label="Cashfree Mock (UPI)" ];
+}

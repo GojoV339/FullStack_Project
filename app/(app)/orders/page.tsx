@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/navigation';
-import { Clock, MapPin, ArrowRight, ShoppingBag } from 'lucide-react';
+import { Timer, MapPin, ChevronRight, ShoppingBag, Receipt, ArrowRight } from 'lucide-react';
 import PageTransition from '@/components/layout/PageTransition';
 import { SectionErrorBoundary } from '@/components/error';
 import { api } from '@/lib/api-client';
@@ -48,7 +48,7 @@ function OrdersPageContent() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-[#FFF8F4] p-6 safe-top pb-28">
+      <div className="min-h-screen bg-[#eeeeee] p-6 safe-top pb-28">
         <h1 className="text-2xl font-bold text-[#1A1A2E] mb-6">
           My <span className="text-gradient">Orders</span>
         </h1>
@@ -61,8 +61,8 @@ function OrdersPageContent() {
           </div>
         ) : orders.length === 0 ? (
           <div className="text-center py-20">
-            <div className="w-20 h-20 rounded-full bg-[#FFF0E8] flex items-center justify-center mx-auto mb-4">
-              <ShoppingBag size={36} className="text-[#FF6B35]" />
+            <div className="w-20 h-20 rounded-full bg-[#e0e0e0] flex items-center justify-center mx-auto mb-4">
+              <ShoppingBag size={36} className="text-[#b50346]" />
             </div>
             <h3 className="text-lg font-semibold text-[#1A1A2E] mb-2">No orders yet</h3>
             <p className="text-[#6B7280] text-sm mb-5">Start ordering from the canteen!</p>
@@ -94,7 +94,7 @@ function OrdersPageContent() {
                   <div className="flex items-start justify-between mb-3">
                     <div>
                       <div className="flex items-center gap-2">
-                        <span className="text-xl font-black text-[#FF6B35]">
+                        <span className="text-xl font-black text-[#b50346]">
                           #{order.tokenNumber}
                         </span>
                         <span
@@ -105,16 +105,16 @@ function OrdersPageContent() {
                         </span>
                       </div>
                       <div className="flex items-center gap-1.5 mt-1.5">
-                        <MapPin size={11} className="text-[#9CA3AF]" />
+                        <MapPin size={12} className="text-[#9CA3AF]" />
                         <span className="text-[#9CA3AF] text-xs">
                           {order.cafeteria?.name || 'Canteen'}
                         </span>
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="text-[#FF6B35] font-bold text-base">₹{order.totalAmount}</span>
+                      <span className="text-[#b50346] font-bold text-base">₹{order.totalAmount}</span>
                       <div className="flex items-center gap-1 mt-1 justify-end">
-                        <Clock size={11} className="text-[#9CA3AF]" />
+                        <Timer size={12} className="text-[#9CA3AF]" />
                         <span className="text-[#9CA3AF] text-[10px]">
                           {new Date(order.createdAt).toLocaleDateString('en-IN', {
                             day: 'numeric',
@@ -133,8 +133,8 @@ function OrdersPageContent() {
                   </div>
 
                   {isActive && (
-                    <div className="flex items-center justify-end mt-3 text-[#FF6B35] text-xs font-medium">
-                      Track order <ArrowRight size={13} className="ml-1" />
+                    <div className="flex items-center justify-end mt-3 text-[#b50346] text-xs font-medium">
+                      Track order <ArrowRight size={14} className="ml-1" />
                     </div>
                   )}
                 </motion.div>

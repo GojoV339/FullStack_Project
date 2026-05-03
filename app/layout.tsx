@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#FF6B35',
+  themeColor: '#b50346',
   width: 'device-width',
   initialScale: 1,
   maximumScale: 1,
@@ -49,10 +49,10 @@ export default function RootLayout({
           richColors
           toastOptions={{
             style: {
-              background: '#FFFFFF',
-              border: '1px solid rgba(255,107,53,0.2)',
-              color: '#1A1A2E',
-              boxShadow: '0 4px 20px rgba(255,107,53,0.15)',
+              background: '#eeeeee',
+              border: '1px solid rgba(181,3,70,0.2)',
+              color: '#2D2D2D',
+              boxShadow: '0 4px 20px rgba(181,3,70,0.15)',
             },
           }}
         />

@@ -2,12 +2,19 @@ import { NextResponse } from 'next/server';
 
 export async function POST() {
   const response = NextResponse.json({ success: true });
-  response.cookies.set('token', '', {
+  
+  const cookieOptions = {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
-    sameSite: 'lax',
+    sameSite: 'lax' as const,
     maxAge: 0,
     path: '/',
-  });
+  };
+
+  response.cookies.set('student_token', '', cookieOptions);
+  response.cookies.set('staff_token', '', cookieOptions);
+  response.cookies.set('token', '', cookieOptions); // Legacy cleanup
+
   return response;
 }
+

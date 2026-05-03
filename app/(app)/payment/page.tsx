@@ -105,24 +105,24 @@ function PaymentContent() {
               <motion.button
                 whileTap={{ scale: 0.9 }}
                 onClick={() => router.back()}
-                className="absolute top-14 left-4 w-9 h-9 flex items-center justify-center rounded-xl bg-white/20 text-white"
+                className="absolute top-14 left-4 w-9 h-9 flex items-center justify-center rounded-xl bg-[#eeeeee]/20 text-[#2D2D2D]"
               >
                 <ArrowLeft size={18} />
               </motion.button>
 
-              <h2 className="text-white font-bold text-lg">Complete Payment</h2>
+              <h2 className="text-[#2D2D2D] font-bold text-lg">Complete Payment</h2>
 
               <motion.p
                 initial={{ scale: 0.8 }}
                 animate={{ scale: 1 }}
-                className="text-white font-black mt-2"
+                className="text-[#2D2D2D] font-black mt-2"
                 style={{ fontSize: '36px' }}
               >
                 ₹{amount}
               </motion.p>
 
               {orderNumber && (
-                <p className="text-white/80 text-sm mt-1 font-mono">{orderNumber}</p>
+                <p className="text-[#2D2D2D]/80 text-sm mt-1 font-mono">{orderNumber}</p>
               )}
             </div>
 
@@ -214,7 +214,7 @@ function PaymentContent() {
                     >
                       <div className="glass-card p-6 text-center">
                         {/* QR Code SVG Placeholder */}
-                        <div className="bg-white p-4 rounded-xl mx-auto w-fit border border-[rgba(255,107,53,0.15)]">
+                        <div className="bg-[#eeeeee] p-4 rounded-xl mx-auto w-fit border border-[rgba(255,107,53,0.15)]">
                           <svg width="160" height="160" viewBox="0 0 160 160">
                             {/* QR pattern simulation */}
                             {Array.from({ length: 16 }).map((_, row) =>
@@ -326,7 +326,7 @@ function PaymentContent() {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
             className="flex-1 flex flex-col items-center justify-center p-8 text-center"
-            style={{ background: 'linear-gradient(180deg, #FFF8F4 0%, #FFFFFF 100%)' }}
+            style={{ background: 'linear-gradient(180deg, #FFF8F4 0%, #eeeeee 100%)' }}
           >
             {/* Green success burst */}
             <div className="relative mb-8">

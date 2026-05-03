@@ -13,13 +13,13 @@ export default function TrackerPage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-[#FFF8F4] p-6 safe-top pb-28">
+      <div className="min-h-screen bg-[#eeeeee] p-6 safe-top pb-28">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => router.push('/orders')}
-            className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#FFF0E8] text-[#FF6B35]"
+            className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#e0e0e0] text-[#b50346]"
             aria-label="Back to orders"
           >
             <ArrowLeft size={20} />

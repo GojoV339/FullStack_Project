@@ -27,10 +27,10 @@ export default function PriorityPassPage() {
     <PageTransition>
       <div className="min-h-screen p-6 safe-top">
         <div className="flex items-center gap-3 mb-6">
-          <motion.button whileTap={{ scale: 0.9 }} onClick={() => router.back()} className="text-white/50">
+          <motion.button whileTap={{ scale: 0.9 }} onClick={() => router.back()} className="text-[#2D2D2D]/50">
             <ArrowLeft size={22} />
           </motion.button>
-          <h1 className="text-xl font-bold text-white">Priority Pass</h1>
+          <h1 className="text-xl font-bold text-[#2D2D2D]">Priority Pass</h1>
         </div>
 
         {/* Hero Card */}
@@ -38,19 +38,19 @@ export default function PriorityPassPage() {
           className="relative overflow-hidden rounded-2xl p-6 mb-6">
           <div className="absolute inset-0 gradient-gold" />
           <div className="absolute inset-0 opacity-20" style={{
-            backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(255,255,255,0.3) 0%, transparent 50%)',
+            backgroundImage: 'radial-gradient(circle at 20% 50%, rgba(238,238,238,0.3) 0%, transparent 50%)',
           }} />
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-2">
-              <Crown size={24} className="text-white" />
-              <Sparkles size={16} className="text-white/70" />
+              <Crown size={24} className="text-[#2D2D2D]" />
+              <Sparkles size={16} className="text-[#2D2D2D]/70" />
             </div>
-            <h2 className="text-2xl font-bold text-white">Priority Pass</h2>
-            <p className="text-white/70 text-sm mt-1">Skip queues. Save more. Eat first.</p>
+            <h2 className="text-2xl font-bold text-[#2D2D2D]">Priority Pass</h2>
+            <p className="text-[#2D2D2D]/70 text-sm mt-1">Skip queues. Save more. Eat first.</p>
             <div className="mt-4 flex items-baseline gap-2">
-              <span className="text-3xl font-black text-white">₹99</span>
-              <span className="text-white/50 text-sm">/month</span>
-              <span className="text-white/40 text-xs line-through ml-2">₹149</span>
+              <span className="text-3xl font-black text-[#2D2D2D]">₹99</span>
+              <span className="text-[#2D2D2D]/50 text-sm">/month</span>
+              <span className="text-[#2D2D2D]/40 text-xs line-through ml-2">₹149</span>
             </div>
           </div>
         </motion.div>
@@ -63,7 +63,7 @@ export default function PriorityPassPage() {
             </div>
             <span className="text-success text-sm font-medium">Active</span>
             {student?.subscriptionExpiry && (
-              <span className="text-white/30 text-xs ml-auto">
+              <span className="text-[#2D2D2D]/30 text-xs ml-auto">
                 Expires {new Date(student.subscriptionExpiry).toLocaleDateString()}
               </span>
             )}
@@ -78,14 +78,14 @@ export default function PriorityPassPage() {
               <div className="w-6 h-6 rounded-full bg-amber-500/20 flex items-center justify-center mt-0.5 flex-shrink-0">
                 <Check size={14} className="text-amber-400" />
               </div>
-              <span className="text-white/70 text-sm">{benefit}</span>
+              <span className="text-[#2D2D2D]/70 text-sm">{benefit}</span>
             </motion.div>
           ))}
         </div>
 
         {!isActive && (
           <motion.button whileTap={{ scale: 0.95 }} onClick={handleActivate}
-            className="w-full py-4 rounded-2xl gradient-gold text-white font-bold text-lg shadow-lg flex items-center justify-center gap-2">
+            className="w-full py-4 rounded-2xl gradient-gold text-[#2D2D2D] font-bold text-lg shadow-lg flex items-center justify-center gap-2">
             <Crown size={20} /> Activate Priority Pass — ₹99/month
           </motion.button>
         )}

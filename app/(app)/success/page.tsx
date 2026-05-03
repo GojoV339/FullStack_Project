@@ -29,11 +29,11 @@ function SuccessContent() {
     return () => clearTimeout(timer);
   }, [spring, tokenNum]);
 
-  const confettiColors = ['#FF6B35', '#FFB347', '#10B981', '#F59E0B', '#8B5CF6'];
+  const confettiColors = ['#b50346', '#d45c7e', '#10B981', '#E6A23C', '#8B5CF6'];
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-[#FFF8F4] flex flex-col items-center justify-center p-6 relative overflow-hidden">
+      <div className="min-h-screen bg-[#eeeeee] flex flex-col items-center justify-center p-6 relative overflow-hidden">
         {/* Confetti particles */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           {[...Array(24)].map((_, i) => (
@@ -108,7 +108,7 @@ function SuccessContent() {
             className="mt-5 glass-card px-5 py-3 text-center"
           >
             <p className="text-[#6B7280] text-xs mb-1">Order Number</p>
-            <p className="font-bold text-[#FF6B35] font-mono text-base">{orderNumber}</p>
+            <p className="font-bold text-[#b50346] font-mono text-base">{orderNumber}</p>
           </motion.div>
         )}
 
@@ -122,15 +122,15 @@ function SuccessContent() {
           <div
             className="glass-card p-8 text-center relative overflow-hidden"
             style={{
-              background: 'linear-gradient(135deg, #FFF8F4 0%, #FFF0E8 100%)',
-              border: '2px solid rgba(255,107,53,0.25)',
-              boxShadow: '0 0 32px rgba(255,107,53,0.2)',
+              background: 'linear-gradient(135deg, #eeeeee 0%, #e0e0e0 100%)',
+              border: '2px solid rgba(181,3,70,0.25)',
+              boxShadow: '0 0 32px rgba(181,3,70,0.2)',
             }}
           >
             {/* Glow */}
             <div
               className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-40 h-40 rounded-full opacity-20 blur-3xl"
-              style={{ background: '#FF6B35' }}
+              style={{ background: '#b50346' }}
             />
 
             <p className="text-[#6B7280] text-sm relative z-10">Your Token Number</p>
@@ -140,7 +140,7 @@ function SuccessContent() {
                 fontSize: '72px',
                 lineHeight: 1,
                 letterSpacing: '-2px',
-                color: '#FF6B35',
+                color: '#b50346',
               }}
             >
               <motion.span>{displayToken}</motion.span>
@@ -219,8 +219,8 @@ export default function SuccessPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen bg-[#FFF8F4] flex items-center justify-center">
-          <div className="w-12 h-12 border-3 border-[rgba(255,107,53,0.2)] border-t-[#FF6B35] rounded-full animate-spin" />
+        <div className="min-h-screen bg-[#eeeeee] flex items-center justify-center">
+          <div className="w-12 h-12 border-3 border-[rgba(181,3,70,0.2)] border-t-[#b50346] rounded-full animate-spin" />
         </div>
       }
     >

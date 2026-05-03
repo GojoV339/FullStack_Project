@@ -27,9 +27,13 @@ export default function LandingPage() {
         initial={{ scale: 0, rotate: -180 }}
         animate={{ scale: 1, rotate: 0 }}
         transition={{ type: 'spring', stiffness: 200, damping: 15 }}
-        className="w-24 h-24 gradient-primary rounded-3xl flex items-center justify-center shadow-primary mb-8"
+        className="w-24 h-24 rounded-3xl overflow-hidden shadow-primary mb-8"
       >
-        <ChefHat size={48} className="text-white" />
+        <img
+          src="/images/logo.jpeg"
+          alt="Amrita Feast Logo"
+          className="w-full h-full object-cover"
+        />
       </motion.div>
 
       {/* Title */}
@@ -37,7 +41,7 @@ export default function LandingPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="text-4xl font-bold text-white text-center"
+        className="text-4xl font-bold text-[#2D2D2D] text-center"
       >
         Amrita{' '}
         <span className="text-gradient">Feast</span>
@@ -47,7 +51,7 @@ export default function LandingPage() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
-        className="text-white/50 text-center mt-3 text-base max-w-xs"
+        className="text-[#2D2D2D]/50 text-center mt-3 text-base max-w-xs"
       >
         Skip the canteen queue. Order from your classroom.
       </motion.p>
@@ -73,35 +77,37 @@ export default function LandingPage() {
             className="flex items-center gap-3 glass-card p-3"
           >
             <span className="text-xl">{feature.emoji}</span>
-            <span className="text-sm text-white/70">{feature.text}</span>
+            <span className="text-sm text-[#2D2D2D]/70">{feature.text}</span>
           </motion.div>
         ))}
       </motion.div>
 
       {/* CTA */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2 }}
-        className="mt-10 w-full max-w-xs space-y-3"
-      >
-        <motion.button
-          whileTap={{ scale: 0.95 }}
-          onClick={() => router.push('/login')}
-          className="btn-primary w-full flex items-center justify-center gap-2"
-        >
-          <Scan size={20} />
-          Scan ID & Login
-          <ArrowRight size={18} />
-        </motion.button>
-
-        <button
-          onClick={() => router.push('/manual-login')}
-          className="w-full text-center text-white/40 text-sm hover:text-white/60 transition-colors py-2"
-        >
-          Enter registration number manually
-        </button>
-      </motion.div>
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 1.2 }}
+          className="mt-10 w-full max-w-xs space-y-3">
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={() => router.push('/menu')}
+            className="btn-primary w-full flex items-center justify-center gap-2">
+            Browse Menu
+          </motion.button>
+          <motion.button
+            whileTap={{ scale: 0.95 }}
+            onClick={() => router.push('/login')}
+            className="btn-primary w-full flex items-center justify-center gap-2">
+            <Scan size={20} />
+            Scan ID & Login
+            <ArrowRight size={18} />
+          </motion.button>
+          <button
+            onClick={() => router.push('/manual-login')}
+            className="w-full text-center text-[#2D2D2D]/40 text-sm hover:text-[#2D2D2D]/60 transition-colors py-2">
+            Enter registration number manually
+          </button>
+        </motion.div>
 
       {/* Staff link */}
       <motion.button
@@ -109,7 +115,7 @@ export default function LandingPage() {
         animate={{ opacity: 1 }}
         transition={{ delay: 1.5 }}
         onClick={() => router.push('/staff/login')}
-        className="absolute bottom-6 text-white/20 text-xs hover:text-white/40 transition-colors"
+        className="absolute bottom-6 text-[#2D2D2D]/20 text-xs hover:text-[#2D2D2D]/40 transition-colors"
       >
         Staff Login →
       </motion.button>

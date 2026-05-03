@@ -2,7 +2,8 @@
 
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChefHat, Clock, ArrowRight, RefreshCw } from 'lucide-react';
+import { ChefHat, Clock, ArrowRight, RefreshCw, Sparkles, Flame, PackageCheck } from 'lucide-react';
+import { toast } from 'sonner';
 import PageTransition from '@/components/layout/PageTransition';
 import { SectionErrorBoundary } from '@/components/error';
 
@@ -25,6 +26,7 @@ const columns = [
     actionBg: '#DBEAFE',
     actionText: '#1E40AF',
     action: 'Start Preparing',
+    icon: Sparkles,
   },
   {
     status: 'PREPARING',
@@ -34,6 +36,7 @@ const columns = [
     actionBg: '#FEF3C7',
     actionText: '#92400E',
     action: 'Mark Ready',
+    icon: Flame,
   },
   {
     status: 'READY',
@@ -43,6 +46,7 @@ const columns = [
     actionBg: '#D1FAE5',
     actionText: '#065F46',
     action: 'Collected',
+    icon: PackageCheck,
   },
 ];
 
@@ -78,14 +82,24 @@ function StaffDashboardContent() {
 
   const updateStatus = async (orderId: string, status: string) => {
     try {
-      await fetch(`/api/orders/${orderId}/status`, {
+      const res = await fetch(`/api/orders/${orderId}/status`, {
         method: 'PATCH',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ orderStatus: status }),
       });
+      
+      if (!res.ok) {
+        const errorData = await res.json();
+        console.error('Status update failed:', errorData);
+        toast.error(errorData.error || 'Failed to update status');
+        return;
+      }
+      
+      toast.success(`Order marked as ${status}`);
       fetchOrders();
-    } catch {
-      // silent fail
+    } catch (err) {
+      console.error('Status update error:', err);
+      toast.error('Network error while updating status');
     }
   };
 
@@ -105,12 +119,12 @@ function StaffDashboardContent() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-[#FFF8F4] p-4 safe-top">
+      <div className="min-h-screen bg-[#eeeeee] p-4 safe-top">
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div>
             <h1 className="text-xl font-bold text-[#1A1A2E] flex items-center gap-2">
-              <ChefHat size={24} className="text-[#FF6B35]" /> Kitchen Dashboard
+              <ChefHat size={24} className="text-[#b50346]" /> Kitchen Dashboard
             </h1>
             <p className="text-[#6B7280] text-xs mt-0.5">
               {newOrderCount > 0
@@ -121,9 +135,9 @@ function StaffDashboardContent() {
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={fetchOrders}
-            className="w-10 h-10 bg-white rounded-xl flex items-center justify-center shadow-sm border border-[rgba(255,107,53,0.1)]"
+            className="w-10 h-10 bg-[#eeeeee] rounded-xl flex items-center justify-center shadow-sm border border-[rgba(181,3,70,0.1)]"
           >
-            <RefreshCw size={17} className="text-[#FF6B35]" />
+            <RefreshCw size={17} className="text-[#b50346]" />
           </motion.button>
         </div>
 
@@ -142,10 +156,7 @@ function StaffDashboardContent() {
                     className="flex items-center gap-2 mb-3 px-4 py-2.5 rounded-xl"
                     style={{ background: col.headerBg }}
                   >
-                    <div
-                      className="w-2 h-2 rounded-full"
-                      style={{ background: col.headerText }}
-                    />
+                    <col.icon size={16} style={{ color: col.headerText }} />
                     <span
                       className="text-sm font-bold"
                       style={{ color: col.headerText }}
@@ -154,7 +165,7 @@ function StaffDashboardContent() {
                     </span>
                     <span
                       className="ml-auto text-xs font-semibold px-2 py-0.5 rounded-full"
-                      style={{ background: 'rgba(255,255,255,0.8)', color: col.headerText }}
+                      style={{ background: 'rgba(238,238,238,0.8)', color: col.headerText }}
                     >
                       {colOrders.length}
                     </span>
@@ -175,7 +186,7 @@ function StaffDashboardContent() {
                           <div className="flex items-center justify-between mb-2">
                             <span
                               className="text-2xl font-black"
-                              style={{ color: '#FF6B35' }}
+                              style={{ color: '#b50346' }}
                             >
                               #{order.tokenNumber}
                             </span>
@@ -198,26 +209,40 @@ function StaffDashboardContent() {
                             ))}
                           </div>
 
-                          <div className="flex items-center justify-between mb-3 pt-2 border-t border-[rgba(255,107,53,0.1)]">
+                          <div className="flex items-center justify-between mb-3 pt-2 border-t border-[rgba(181,3,70,0.1)]">
                             <span className="text-xs text-[#6B7280]">Total</span>
-                            <span className="text-sm font-bold text-[#FF6B35]">₹{order.totalAmount}</span>
+                            <span className="text-sm font-bold text-[#b50346]">₹{order.totalAmount}</span>
                           </div>
 
-                          {getNextStatus(order.orderStatus) && (
-                            <motion.button
-                              whileTap={{ scale: 0.95 }}
-                              onClick={() =>
-                                updateStatus(order.id, getNextStatus(order.orderStatus)!)
-                              }
-                              className="w-full py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5"
-                              style={{
-                                background: col.actionBg,
-                                color: col.actionText,
-                              }}
-                            >
-                              {col.action} <ArrowRight size={13} />
-                            </motion.button>
-                          )}
+                          <div className="flex gap-2">
+                            {getNextStatus(order.orderStatus) && (
+                              <motion.button
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() =>
+                                  updateStatus(order.id, getNextStatus(order.orderStatus)!)
+                                }
+                                className="flex-1 py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 transition-all"
+                                style={{
+                                  background: col.actionBg,
+                                  color: col.actionText,
+                                }}
+                              >
+                                {col.action} <ArrowRight size={13} />
+                              </motion.button>
+                            )}
+
+                            {order.orderStatus !== 'COLLECTED' && (
+                              <motion.button
+                                whileTap={{ scale: 0.95 }}
+                                onClick={() => updateStatus(order.id, 'COLLECTED')}
+                                className="px-3 py-2.5 rounded-xl text-xs font-semibold text-[#6B7280] bg-[#F3F4F6] border border-[#E5E7EB] hover:bg-[#D1D5DB] transition-all"
+                                title="Skip to Collected"
+                              >
+                                Finish
+                              </motion.button>
+                            )}
+                          </div>
+
                         </motion.div>
                       ))}
                     </AnimatePresence>

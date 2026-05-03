@@ -116,13 +116,13 @@ export default function CheckoutPage() {
 
   return (
     <PageTransition>
-      <div className="min-h-screen bg-[#FFF8F4] p-6 safe-top pb-28">
+      <div className="min-h-screen bg-[#eeeeee] p-6 safe-top pb-28">
         {/* Header */}
         <div className="flex items-center gap-3 mb-6">
           <motion.button
             whileTap={{ scale: 0.9 }}
             onClick={() => router.back()}
-            className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#FFF0E8] text-[#FF6B35]"
+            className="w-9 h-9 flex items-center justify-center rounded-xl bg-[#e0e0e0] text-[#b50346]"
           >
             <ArrowLeft size={20} />
           </motion.button>
@@ -138,7 +138,7 @@ export default function CheckoutPage() {
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 1, repeat: Infinity, ease: 'linear' }}
-              className="w-12 h-12 border-4 border-[rgba(255,107,53,0.15)] border-t-[#FF6B35] rounded-full"
+              className="w-12 h-12 border-4 border-[rgba(181,3,70,0.15)] border-t-[#b50346] rounded-full"
             />
             <p className="text-[#6B7280] mt-4 text-sm">Creating your order...</p>
           </div>
